@@ -1,0 +1,8 @@
+{
+  "name": "gtafans-render-shim",
+  "private": true,
+  "scripts": {
+    "build": "cd .. && npm install && npm run build",
+    "start": "cd .. && npm run start"
+  }
+}

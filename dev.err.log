@@ -1,0 +1,47 @@
+(node:1548) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ⨯ ./components/countdown-pill.tsx
+Error: Failed to read source code from D:\AntiGravity Projects\gtafans\components\countdown-pill.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/countdown-pill.tsx
+ ⨯ ./components/countdown-pill.tsx
+Error: Failed to read source code from D:\AntiGravity Projects\gtafans\components\countdown-pill.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/countdown-pill.tsx
+./components/site-shell.tsx
+./app/page.tsx
+ ⨯ ./components/countdown-pill.tsx
+Error: Failed to read source code from D:\AntiGravity Projects\gtafans\components\countdown-pill.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/countdown-pill.tsx
+./components/site-shell.tsx
+./app/page.tsx
+ ⨯ ./components/site-shell.tsx
+Error: Failed to read source code from D:\AntiGravity Projects\gtafans\components\site-shell.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/site-shell.tsx
+./app/page.tsx
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload

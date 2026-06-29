@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: gtafans
+    runtime: node
+    plan: starter
+    rootDir: .
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: HOSTNAME
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: NEXT_PUBLIC_APP_URL
+        sync: false

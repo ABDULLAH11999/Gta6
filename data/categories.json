@@ -1,0 +1,10 @@
+[
+  {
+    "id": "cat-gameplay",
+    "icon": "joystick",
+    "name": "Gameplay",
+    "slug": "gameplay",
+    "order": 2,
+    "accent": "from-sky-500 to-cyan-400"
+  }
+]

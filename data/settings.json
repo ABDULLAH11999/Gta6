@@ -1,0 +1,579 @@
+{
+  "title": "GtaFans",
+  "description": "GtaFans is a GTA 6 news hub for trailer breakdowns, gameplay analysis, character deep-dives, location guides, and community resources.",
+  "keywords": [
+    "GTA 6 news",
+    "GTA 6 trailer breakdowns",
+    "Vice City analysis",
+    "Jason Duval",
+    "Lucia Caminos",
+    "GTA 6 release date",
+    "GTA 6 gameplay",
+    "GTA 6 locations",
+    "GTA 6 resources",
+    "GtaFans"
+  ],
+  "games": [
+    "All News",
+    "Trailers",
+    "Gameplay",
+    "Characters",
+    "Locations",
+    "Resources"
+  ],
+  "scheduledSlots": [
+    {
+      "id": "slot-001",
+      "time": "09:00 PKT",
+      "games": [
+        "Call of Duty: Warzone"
+      ],
+      "title": "Call of Duty: Warzone slot update"
+    },
+    {
+      "id": "slot-002",
+      "time": "09:15 PKT",
+      "games": [
+        "Counter-Strike 2"
+      ],
+      "title": "Counter-Strike 2 slot update"
+    },
+    {
+      "id": "slot-003",
+      "time": "09:30 PKT",
+      "games": [
+        "Apex Legends"
+      ],
+      "title": "Apex Legends slot update"
+    },
+    {
+      "id": "slot-004",
+      "time": "09:45 PKT",
+      "games": [
+        "PUBG: Battlegrounds"
+      ],
+      "title": "PUBG: Battlegrounds slot update"
+    },
+    {
+      "id": "slot-005",
+      "time": "10:00 PKT",
+      "games": [
+        "Valorant"
+      ],
+      "title": "Valorant slot update"
+    },
+    {
+      "id": "slot-006",
+      "time": "10:15 PKT",
+      "games": [
+        "Garena Free Fire"
+      ],
+      "title": "Garena Free Fire slot update"
+    },
+    {
+      "id": "slot-007",
+      "time": "10:30 PKT",
+      "games": [
+        "Tom Clancy's Rainbow Six Siege"
+      ],
+      "title": "Tom Clancy's Rainbow Six Siege slot update"
+    },
+    {
+      "id": "slot-008",
+      "time": "10:45 PKT",
+      "games": [
+        "Overwatch 2"
+      ],
+      "title": "Overwatch 2 slot update"
+    },
+    {
+      "id": "slot-009",
+      "time": "11:00 PKT",
+      "games": [
+        "Fortnite"
+      ],
+      "title": "Fortnite slot update"
+    },
+    {
+      "id": "slot-010",
+      "time": "11:15 PKT",
+      "games": [
+        "Roblox"
+      ],
+      "title": "Roblox slot update"
+    },
+    {
+      "id": "slot-011",
+      "time": "11:30 PKT",
+      "games": [
+        "Minecraft"
+      ],
+      "title": "Minecraft slot update"
+    },
+    {
+      "id": "slot-012",
+      "time": "11:45 PKT",
+      "games": [
+        "Ark: Survival Ascended"
+      ],
+      "title": "Ark: Survival Ascended slot update"
+    },
+    {
+      "id": "slot-013",
+      "time": "12:00 PKT",
+      "games": [
+        "Rust"
+      ],
+      "title": "Rust slot update"
+    },
+    {
+      "id": "slot-014",
+      "time": "12:15 PKT",
+      "games": [
+        "Dead by Daylight"
+      ],
+      "title": "Dead by Daylight slot update"
+    },
+    {
+      "id": "slot-015",
+      "time": "12:30 PKT",
+      "games": [
+        "Palworld"
+      ],
+      "title": "Palworld slot update"
+    },
+    {
+      "id": "slot-016",
+      "time": "12:45 PKT",
+      "games": [
+        "No Man's Sky"
+      ],
+      "title": "No Man's Sky slot update"
+    },
+    {
+      "id": "slot-017",
+      "time": "13:00 PKT",
+      "games": [
+        "Grand Theft Auto Online"
+      ],
+      "title": "Grand Theft Auto Online slot update"
+    },
+    {
+      "id": "slot-018",
+      "time": "13:15 PKT",
+      "games": [
+        "Rocket League"
+      ],
+      "title": "Rocket League slot update"
+    },
+    {
+      "id": "slot-019",
+      "time": "13:30 PKT",
+      "games": [
+        "The Sims 4"
+      ],
+      "title": "The Sims 4 slot update"
+    },
+    {
+      "id": "slot-020",
+      "time": "13:45 PKT",
+      "games": [
+        "NBA 2K"
+      ],
+      "title": "NBA 2K slot update"
+    },
+    {
+      "id": "slot-021",
+      "time": "14:00 PKT",
+      "games": [
+        "Forza Horizon 5"
+      ],
+      "title": "Forza Horizon 5 slot update"
+    },
+    {
+      "id": "slot-022",
+      "time": "14:15 PKT",
+      "games": [
+        "Destiny 2"
+      ],
+      "title": "Destiny 2 slot update"
+    },
+    {
+      "id": "slot-023",
+      "time": "14:30 PKT",
+      "games": [
+        "World of Warcraft"
+      ],
+      "title": "World of Warcraft slot update"
+    },
+    {
+      "id": "slot-024",
+      "time": "14:45 PKT",
+      "games": [
+        "Warframe"
+      ],
+      "title": "Warframe slot update"
+    },
+    {
+      "id": "slot-025",
+      "time": "15:00 PKT",
+      "games": [
+        "Genshin Impact"
+      ],
+      "title": "Genshin Impact slot update"
+    },
+    {
+      "id": "slot-026",
+      "time": "15:15 PKT",
+      "games": [
+        "Honkai: Star Rail"
+      ],
+      "title": "Honkai: Star Rail slot update"
+    },
+    {
+      "id": "slot-027",
+      "time": "15:30 PKT",
+      "games": [
+        "Elden Ring"
+      ],
+      "title": "Elden Ring slot update"
+    },
+    {
+      "id": "slot-028",
+      "time": "15:45 PKT",
+      "games": [
+        "The Elder Scrolls Online"
+      ],
+      "title": "The Elder Scrolls Online slot update"
+    },
+    {
+      "id": "slot-029",
+      "time": "16:00 PKT",
+      "games": [
+        "Fallout 76"
+      ],
+      "title": "Fallout 76 slot update"
+    },
+    {
+      "id": "slot-030",
+      "time": "16:15 PKT",
+      "games": [
+        "Helldivers 2"
+      ],
+      "title": "Helldivers 2 slot update"
+    },
+    {
+      "id": "slot-031",
+      "time": "16:30 PKT",
+      "games": [
+        "Cyberpunk 2077"
+      ],
+      "title": "Cyberpunk 2077 slot update"
+    },
+    {
+      "id": "slot-032",
+      "time": "16:45 PKT",
+      "games": [
+        "League of Legends"
+      ],
+      "title": "League of Legends slot update"
+    },
+    {
+      "id": "slot-033",
+      "time": "17:00 PKT",
+      "games": [
+        "Dota 2"
+      ],
+      "title": "Dota 2 slot update"
+    },
+    {
+      "id": "slot-034",
+      "time": "17:15 PKT",
+      "games": [
+        "Mobile Legends: Bang Bang"
+      ],
+      "title": "Mobile Legends: Bang Bang slot update"
+    },
+    {
+      "id": "slot-035",
+      "time": "17:30 PKT",
+      "games": [
+        "Diablo IV"
+      ],
+      "title": "Diablo IV slot update"
+    },
+    {
+      "id": "slot-036",
+      "time": "17:45 PKT",
+      "games": [
+        "Path of Exile"
+      ],
+      "title": "Path of Exile slot update"
+    },
+    {
+      "id": "slot-037",
+      "time": "18:00 PKT",
+      "games": [
+        "Baldur's Gate 3"
+      ],
+      "title": "Baldur's Gate 3 slot update"
+    },
+    {
+      "id": "slot-038",
+      "time": "18:15 PKT",
+      "games": [
+        "Lost Ark"
+      ],
+      "title": "Lost Ark slot update"
+    },
+    {
+      "id": "slot-039",
+      "time": "18:30 PKT",
+      "games": [
+        "Teamfight Tactics"
+      ],
+      "title": "Teamfight Tactics slot update"
+    },
+    {
+      "id": "slot-040",
+      "time": "18:45 PKT",
+      "games": [
+        "Tekken 8"
+      ],
+      "title": "Tekken 8 slot update"
+    },
+    {
+      "id": "slot-041",
+      "time": "19:00 PKT",
+      "games": [
+        "Marvel Rivals"
+      ],
+      "title": "Marvel Rivals slot update"
+    },
+    {
+      "id": "slot-042",
+      "time": "19:15 PKT",
+      "games": [
+        "Delta Force"
+      ],
+      "title": "Delta Force slot update"
+    },
+    {
+      "id": "slot-043",
+      "time": "19:30 PKT",
+      "games": [
+        "Path of Exile 2"
+      ],
+      "title": "Path of Exile 2 slot update"
+    },
+    {
+      "id": "slot-044",
+      "time": "19:45 PKT",
+      "games": [
+        "The Finals"
+      ],
+      "title": "The Finals slot update"
+    },
+    {
+      "id": "slot-045",
+      "time": "20:00 PKT",
+      "games": [
+        "Black Myth: Wukong"
+      ],
+      "title": "Black Myth: Wukong slot update"
+    },
+    {
+      "id": "slot-046",
+      "time": "20:15 PKT",
+      "games": [
+        "Kingdom Come: Deliverance II"
+      ],
+      "title": "Kingdom Come: Deliverance II slot update"
+    },
+    {
+      "id": "slot-047",
+      "time": "20:30 PKT",
+      "games": [
+        "Call of Duty: Black Ops 6"
+      ],
+      "title": "Call of Duty: Black Ops 6 slot update"
+    },
+    {
+      "id": "slot-048",
+      "time": "20:45 PKT",
+      "games": [
+        "S.T.A.L.K.E.R. 2: Heart of Chornobyl"
+      ],
+      "title": "S.T.A.L.K.E.R. 2: Heart of Chornobyl slot update"
+    },
+    {
+      "id": "slot-049",
+      "time": "21:00 PKT",
+      "games": [
+        "Zenless Zone Zero"
+      ],
+      "title": "Zenless Zone Zero slot update"
+    },
+    {
+      "id": "slot-050",
+      "time": "21:15 PKT",
+      "games": [
+        "Wuthering Waves"
+      ],
+      "title": "Wuthering Waves slot update"
+    },
+    {
+      "id": "slot-051",
+      "time": "21:30 PKT",
+      "games": [
+        "Once Human"
+      ],
+      "title": "Once Human slot update"
+    },
+    {
+      "id": "slot-052",
+      "time": "21:45 PKT",
+      "games": [
+        "Gray Zone Warfare"
+      ],
+      "title": "Gray Zone Warfare slot update"
+    },
+    {
+      "id": "slot-053",
+      "time": "22:00 PKT",
+      "games": [
+        "Manor Lords"
+      ],
+      "title": "Manor Lords slot update"
+    },
+    {
+      "id": "slot-054",
+      "time": "22:15 PKT",
+      "games": [
+        "Dragon Ball: Sparking! Zero"
+      ],
+      "title": "Dragon Ball: Sparking! Zero slot update"
+    },
+    {
+      "id": "slot-055",
+      "time": "22:30 PKT",
+      "games": [
+        "Monster Hunter Wilds"
+      ],
+      "title": "Monster Hunter Wilds slot update"
+    },
+    {
+      "id": "slot-056",
+      "time": "22:45 PKT",
+      "games": [
+        "EA Sports FC 25"
+      ],
+      "title": "EA Sports FC 25 slot update"
+    },
+    {
+      "id": "slot-057",
+      "time": "23:00 PKT",
+      "games": [
+        "NBA 2K25"
+      ],
+      "title": "NBA 2K25 slot update"
+    },
+    {
+      "id": "slot-058",
+      "time": "23:15 PKT",
+      "games": [
+        "Madden NFL 25"
+      ],
+      "title": "Madden NFL 25 slot update"
+    },
+    {
+      "id": "slot-059",
+      "time": "23:30 PKT",
+      "games": [
+        "F1 24"
+      ],
+      "title": "F1 24 slot update"
+    },
+    {
+      "id": "slot-060",
+      "time": "23:45 PKT",
+      "games": [
+        "Hunt: Showdown 1896"
+      ],
+      "title": "Hunt: Showdown 1896 slot update"
+    }
+  ],
+  "canonicalUrl": "https://gtafans.online",
+  "ogImage": "/og-image.jpg",
+  "favicon": "/favicon.ico",
+  "launchDate": "2026-11-19T00:00:00.000Z",
+  "brandMark": "GTAFANS",
+  "brandTagline": "Trailer breakdowns, character deep-dives, and Vice City coverage.",
+  "headerLinks": [
+    {
+      "href": "/",
+      "label": "Home"
+    },
+    {
+      "href": "/about",
+      "label": "About"
+    },
+    {
+      "href": "/?category=Trailers",
+      "label": "Trailers"
+    },
+    {
+      "href": "/?category=Gameplay",
+      "label": "Gameplay"
+    },
+    {
+      "href": "/?category=Characters",
+      "label": "Characters"
+    },
+    {
+      "href": "/?category=Locations",
+      "label": "Locations"
+    },
+    {
+      "href": "/?category=Resources",
+      "label": "Resources"
+    }
+  ],
+  "footerLinks": [
+    {
+      "href": "/privacy-policy",
+      "label": "Privacy Policy"
+    },
+    {
+      "href": "/terms-conditions",
+      "label": "Terms of Service"
+    },
+    {
+      "href": "/disclaimer",
+      "label": "Disclaimer"
+    },
+    {
+      "href": "/contact",
+      "label": "Contact"
+    }
+  ],
+  "socialLinks": [
+    {
+      "href": "https://www.reddit.com",
+      "label": "Reddit"
+    },
+    {
+      "href": "https://x.com",
+      "label": "X"
+    }
+  ],
+  "contactEmail": "hello@gtafans.online",
+  "smtpEnabled": true,
+  "otpRequired": true,
+  "smtpHost": "smtp.resend.net",
+  "smtpPort": "587",
+  "smtpSender": "noreply@gtafans.online",
+  "adminReceivers": [
+    "admin@gtafans.online"
+  ]
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "u-admin",
+    "name": "Admin User",
+    "email": "admin@gtafans.online",
+    "passwordHash": "$2a$10$P11nqKoPmuaI/yzeHvVOeOTzM/z3ze4GzUP5gCsEUEl3dnGSyI8JG",
+    "role": "admin",
+    "verified": true,
+    "createdAt": "2026-06-29T10:09:35.277Z"
+  }
+]

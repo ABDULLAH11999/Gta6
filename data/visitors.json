@@ -1,0 +1,211 @@
+[
+  {
+    "id": "01506e22-d1c2-48f3-be15-d43c64a943c2",
+    "ip": "::1",
+    "location": "Unknown location",
+    "page": "/blog/gta6-trailer-1-breakdown",
+    "referrer": "http://localhost:3000/blog/gta6-trailer-1-breakdown",
+    "timestamp": "2026-06-26T20:57:09.611Z",
+    "visitedAt": "just now",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "type": "Return"
+  },
+  {
+    "id": "5c5613c1-6bfd-4031-abfd-8fd96dc153a1",
+    "ip": "::1",
+    "page": "/blog/gta6-trailer-1-breakdown",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "http://localhost:3000/blog/gta6-trailer-1-breakdown",
+    "timestamp": "2026-06-26T20:55:42.748Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "791e6780-5b44-4d5f-a4da-7ac9aaede422",
+    "ip": "::1",
+    "page": "/blog/gta6-trailer-1-breakdown",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "http://localhost:3000/blog/gta6-trailer-1-breakdown",
+    "timestamp": "2026-06-26T20:47:55.130Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "c5040027-da2a-4be4-8265-5532d16b7b1b",
+    "ip": "::1",
+    "page": "/blog/gta6-trailer-1-breakdown",
+    "type": "Return",
+    "session": "af364d7e-5dc0-4e04-b142-cfcd926848be",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T20:46:35.751Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "9708c938-24d8-4d86-8d8f-a7c9f8b2f5f8",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T20:46:00.025Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "f5e55dc2-eb66-4b97-a553-3dd3562a6043",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T20:39:23.306Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "c720eb5e-40dc-4cea-bbca-17439fbdedfb",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T20:33:04.291Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "80e574d2-74d8-443c-82dd-a91f52385b74",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T20:32:51.476Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "64c8d659-1331-4115-9d27-851f6a023d0b",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T20:32:01.269Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "93111ba8-2dcd-49fe-9839-664f88f2804d",
+    "ip": "::1",
+    "page": "/",
+    "type": "New",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T20:32:01.254Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "976b623b-8ae6-4cdf-9412-9225440c6d70",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "http://localhost:3000/",
+    "timestamp": "2026-06-26T20:00:58.687Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "cfa8c223-9090-4cab-af08-27aea23e7202",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T19:20:15.072Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "8e5a37f3-dd0c-4fe0-aa01-b2a4db61736b",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T19:19:44.032Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "0e7fc95c-4d14-422d-a767-43b43c7db740",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T19:18:56.318Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "145f03eb-fc68-45f4-b8c8-8f4cdada581d",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T19:15:25.675Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "e4c3b8d5-8b06-448a-b3a9-3ad6fe92674a",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T19:15:23.188Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "dc3ffe9c-f06d-4d21-a350-0817c1127a03",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T19:15:17.801Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "6959c39f-83b0-4b91-a1fa-1ec52b282813",
+    "ip": "::1",
+    "page": "/",
+    "type": "New",
+    "session": "05fecb29-8b0d-48b2-aaf9-4f96737f6ed2",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T19:03:57.966Z",
+    "visitedAt": "just now"
+  },
+  {
+    "id": "45cfc936-06c2-40c9-bdca-2ee45e8653c2",
+    "ip": "::1",
+    "page": "/",
+    "type": "Return",
+    "session": "af364d7e-5dc0-4e04-b142-cfcd926848be",
+    "location": "Unknown location",
+    "referrer": "Direct",
+    "timestamp": "2026-06-26T18:52:20.359Z",
+    "visitedAt": "just now"
+  }
+]

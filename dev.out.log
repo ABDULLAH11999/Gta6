@@ -1,0 +1,51 @@
+
+> gtafans@0.1.0 dev
+> next dev -p 3000
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 5s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 1125ms (72 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 10.3s (552 modules)
+ GET / 200 in 10868ms
+ GET / 200 in 80ms
+ ○ Compiling /api/visitors ...
+ ✓ Compiled /api/visitors in 1031ms (300 modules)
+ GET / 200 in 2995ms
+ GET / 200 in 229ms
+ POST /api/visitors 200 in 171522ms
+ POST /api/visitors 200 in 180105ms
+ ✓ Compiled in 3.1s (534 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 3.4s (760 modules)
+ ○ Compiling /api/visitors ...
+ GET / 200 in 985ms
+ ✓ Compiled /api/visitors in 1303ms (340 modules)
+ GET / 500 in 47ms
+ POST /api/visitors 500 in 102ms
+ POST /api/visitors 200 in 16284ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 2.9s (780 modules)
+ GET / 200 in 397ms
+ GET /_next/static/webpack/97b97250b0ca5047.webpack.hot-update.json 404 in 2812ms
+ GET / 200 in 430ms
+ ✓ Compiled in 3.4s (790 modules)
+ GET / 404 in 319ms
+ POST /api/visitors 200 in 22575ms
+ POST /api/visitors 200 in 22141ms
+ POST /api/visitors 200 in 14447ms
+ ○ Compiling / ...
+ ✓ Compiled / in 3.9s (850 modules)
+ ✓ Compiled in 2.3s (850 modules)
+ ✓ Compiled in 3.5s (816 modules)
+ ✓ Compiled in 1022ms (758 modules)
+ ✓ Compiled /_not-found in 296ms (747 modules)
+ GET /icon.svg 404 in 545ms
+ ✓ Compiled in 2.3s (860 modules)
+ ✓ Compiled in 494ms (336 modules)
+ ✓ Compiled in 2.6s (785 modules)

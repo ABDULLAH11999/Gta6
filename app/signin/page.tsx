@@ -1,0 +1,21 @@
+import { AuthForm } from '@/components/auth/auth-form'
+import { SiteShell } from '@/components/site-shell'
+import { GlassPanel, SectionHeading } from '@/components/ui/glass'
+
+export default function SigninPage() {
+  return (
+    <SiteShell
+      title="Sign In"
+      subtitle="Return to your GtaFans account to follow posts, comment on articles, and manage your saved reads."
+    >
+      <div className="mx-auto w-full max-w-2xl">
+        <GlassPanel className="p-6 sm:p-8">
+          <SectionHeading eyebrow="Account Access" title="Sign in to GtaFans" />
+          <div className="mt-6">
+            <AuthForm mode="signin" />
+          </div>
+        </GlassPanel>
+      </div>
+    </SiteShell>
+  )
+}
