@@ -1,6 +1,4 @@
-import { TriangleAlert } from 'lucide-react'
 import { SiteShell } from '@/components/site-shell'
-import { GlassPanel, SectionHeading } from '@/components/ui/glass'
 
 export default function DisclaimerPage() {
   return (
@@ -8,15 +6,19 @@ export default function DisclaimerPage() {
       title="Disclaimer"
       subtitle="Important notes about the scope, accuracy, and fan-made nature of GtaFans."
     >
-      <GlassPanel className="space-y-6">
-        <SectionHeading eyebrow="Disclosure" title="Fan site disclaimer" />
-        <div className="rounded-3xl border border-sky-950/70 bg-amber-500/8 p-5">
-          <TriangleAlert className="h-5 w-5 text-amber-200" />
-          <p className="mt-3 text-sm leading-7 text-slate-300">
+      <article className="mx-auto max-w-4xl space-y-10 py-2">
+        <section className="space-y-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.34em] text-fuchsia-200/90">
+            Disclosure
+          </p>
+          <h2 className="text-2xl font-black tracking-[-0.04em] text-white sm:text-3xl">
+            Fan site disclaimer
+          </h2>
+          <p className="text-sm leading-8 text-slate-300 sm:text-base">
             GtaFans is an independent fan project. It is not affiliated with Rockstar Games or Take-Two Interactive. Brand names, game names, and referenced media belong to their respective owners.
           </p>
-        </div>
-      </GlassPanel>
+        </section>
+      </article>
     </SiteShell>
   )
 }
