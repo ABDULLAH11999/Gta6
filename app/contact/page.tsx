@@ -42,7 +42,7 @@ function InfoRow({
   value: string
 }>) {
   return (
-    <div className="flex items-center gap-3 rounded-3xl border border-white/8 bg-white/[0.03] p-4">
+    <div className="flex items-center gap-3 rounded-3xl border border-sky-950/70 bg-sky-950/12 p-4">
       <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-fuchsia-500/10 text-fuchsia-100">
         <Icon className="h-5 w-5" />
       </span>

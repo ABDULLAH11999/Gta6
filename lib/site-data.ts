@@ -62,6 +62,13 @@ export const siteSettings: SiteSettings = {
   adminReceivers: ['admin@gtafans.online'],
 }
 
+export const defaultCategoryFilters = ['All News', 'Trailers', 'Gameplay', 'Characters', 'Locations', 'Resources']
+
+export function getCategoryFilters(categories?: string[]) {
+  const merged = [...defaultCategoryFilters, ...(categories ?? [])]
+  return merged.filter((label, index) => merged.findIndex((item) => item.toLowerCase() === label.toLowerCase()) === index)
+}
+
 export const gameTags: GameTag[] = [
   { id: 'pubg', name: 'PUBG', color: 'from-fuchsia-500 to-violet-500' },
   { id: 'gta5', name: 'GTA 5', color: 'from-amber-400 to-orange-500' },

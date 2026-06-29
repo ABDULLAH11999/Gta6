@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
         <SectionHeading eyebrow="Data Use" title="How GtaFans handles information" />
         <div className="grid gap-3 md:grid-cols-2">
           {sections.map((section) => (
-            <div key={section.title} className="rounded-3xl border border-white/8 bg-white/[0.03] p-4">
+            <div key={section.title} className="rounded-3xl border border-sky-950/70 bg-sky-950/12 p-4">
               <section.icon className="h-5 w-5 text-fuchsia-200" />
               <p className="mt-3 text-sm font-bold text-white">{section.title}</p>
               <p className="mt-2 text-sm leading-7 text-slate-400">{section.text}</p>

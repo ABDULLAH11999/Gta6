@@ -9,7 +9,7 @@ export function GlassPanel({
 }>) {
   return (
     <section
-      className={`rounded-[1.8rem] border border-white/10 bg-[rgba(10,8,20,0.82)] p-5 text-white shadow-[0_22px_60px_rgba(0,0,0,0.32)] transition-all duration-300 hover:border-fuchsia-400/25 sm:p-6 ${className}`}
+      className={`rounded-[1.8rem] border border-sky-950/80 bg-[rgba(10,8,20,0.82)] p-5 text-white shadow-[0_22px_60px_rgba(0,0,0,0.32)] transition-all duration-300 hover:border-sky-700/40 sm:p-6 ${className}`}
     >
       {children}
     </section>

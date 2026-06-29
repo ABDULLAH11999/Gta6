@@ -22,6 +22,7 @@
 html {
   background: rgb(var(--bg));
   scroll-behavior: smooth;
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -38,7 +39,11 @@ body {
     linear-gradient(180deg, rgba(7, 4, 16, 0.96) 0%, rgba(12, 11, 34, 0.98) 58%, rgba(13, 13, 44, 1) 100%);
   background-size: cover;
   background-position: center top;
-  background-attachment: fixed;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -173,4 +178,3 @@ a {
 .category-hover-btn {
   transition: all 0.3s ease;
 }
-

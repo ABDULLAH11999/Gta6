@@ -40,7 +40,7 @@ export default function AboutPage() {
           />
           <div className="grid gap-3 sm:grid-cols-2">
             {pillars.map((item) => (
-              <div key={item.title} className="rounded-3xl border border-white/8 bg-white/[0.03] p-4">
+              <div key={item.title} className="rounded-3xl border border-sky-950/70 bg-sky-950/12 p-4">
                 <item.icon className="h-5 w-5 text-fuchsia-200" />
                 <p className="mt-3 text-sm font-bold text-white">{item.title}</p>
                 <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
@@ -72,7 +72,7 @@ function Principle({
   text: string
 }>) {
   return (
-    <div className="rounded-3xl border border-white/8 bg-white/[0.03] p-4">
+    <div className="rounded-3xl border border-sky-950/70 bg-sky-950/12 p-4">
       <StatusBadge label={label} tone={tone} />
       <p className="mt-3 text-sm leading-7 text-slate-400">{text}</p>
     </div>

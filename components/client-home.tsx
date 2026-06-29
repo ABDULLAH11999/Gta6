@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { ArrowRight, CalendarDays, Clock3, ExternalLink, Gamepad2, Sparkles, Users, MapPin, BookOpen } from 'lucide-react'
 import type { BlogCategory, BlogPostRecord } from '@/lib/types'
+import { getCategoryFilters } from '@/lib/site-data'
 
 function categoryMeta(slug: string) {
   switch (slug.toLowerCase()) {
@@ -32,6 +33,7 @@ export function ClientHome({
   const router = useRouter()
   const searchParams = useSearchParams()
   const activeCategory = searchParams.get('category')?.trim() || 'all'
+  const categoryFilters = getCategoryFilters(initialCategories.map((category) => category.name))
 
   const visiblePosts = initialPosts.filter((post) => {
     if (activeCategory === 'all') return true
@@ -44,11 +46,11 @@ export function ClientHome({
   const selectedLabel =
     activeCategory === 'all'
       ? 'All News'
-      : initialCategories.find((item) => item.slug === activeCategory)?.name ?? activeCategory
+      : categoryFilters.find((item) => item.toLowerCase() === activeCategory.toLowerCase()) ?? activeCategory
 
   return (
     <div className="relative mx-auto flex w-full max-w-[1440px] flex-col px-4 pb-12 pt-4 sm:px-6 lg:px-8">
-      <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(10,8,24,0.96),rgba(10,12,38,0.98))] px-5 py-8 shadow-[0_24px_90px_rgba(0,0,0,0.22)] sm:px-8 sm:py-10">
+      <section className="relative overflow-hidden rounded-[2.2rem] bg-[linear-gradient(180deg,rgba(10,8,24,0.96),rgba(10,12,38,0.98))] px-5 py-8 shadow-[0_24px_90px_rgba(0,0,0,0.22)] sm:px-8 sm:py-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,0,153,0.14),transparent_30%),radial-gradient(circle_at_center,rgba(123,92,255,0.22),transparent_56%)]" />
         <div className="relative flex items-center justify-between gap-3">
           <Link href="/" className="inline-flex items-center gap-2">
@@ -64,7 +66,7 @@ export function ClientHome({
           </Link>
 
           <div className="rounded-full border border-fuchsia-400/35 bg-[linear-gradient(90deg,rgba(61,13,68,0.9),rgba(17,47,71,0.9))] px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-rose-100 sm:text-[11px]">
-            GTA VI • Nov 19 2026 • 146 days
+            GTA VI | Nov 19 2026 | 146 days
           </div>
         </div>
 
@@ -90,21 +92,17 @@ export function ClientHome({
       </section>
 
       <div className="mt-7 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-        <FilterChip active={activeCategory === 'all'} onClick={() => router.push('/', { scroll: false })}>
-          All News
-        </FilterChip>
-        {initialCategories.map((category) => {
-          const slug = category.slug.toLowerCase()
-          return (
-            <FilterChip
-              key={category.id}
-              active={activeCategory.toLowerCase() === slug}
-              onClick={() => router.push(`/?category=${encodeURIComponent(category.slug)}`, { scroll: false })}
-            >
-              {category.name}
-            </FilterChip>
-          )
-        })}
+        {categoryFilters.map((label) => (
+          <FilterChip
+            key={label}
+            active={activeCategory.toLowerCase() === (label === 'All News' ? 'all' : label.toLowerCase())}
+            onClick={() =>
+              router.push(label === 'All News' ? '/' : `/?category=${encodeURIComponent(label)}`, { scroll: false })
+            }
+          >
+            {label}
+          </FilterChip>
+        ))}
       </div>
 
       <div className="mx-auto mt-8 flex w-full max-w-[620px] flex-col items-center px-4 text-center sm:px-6">
@@ -131,7 +129,7 @@ export function ClientHome({
             return (
               <article
                 key={post.id}
-                className="group overflow-hidden rounded-[1.8rem] border border-white/10 bg-[linear-gradient(180deg,rgba(14,10,31,0.96),rgba(10,9,26,0.96))] shadow-[0_22px_70px_rgba(0,0,0,0.26)] transition duration-300 hover:-translate-y-1"
+                className="group overflow-hidden rounded-[1.8rem] border border-sky-950/70 bg-[linear-gradient(180deg,rgba(14,10,31,0.96),rgba(10,9,26,0.96))] shadow-[0_22px_70px_rgba(0,0,0,0.26)] transition duration-300 hover:-translate-y-1 hover:border-sky-700/40"
               >
                 <div className="relative">
                   <div className="absolute left-4 top-4 z-10 flex gap-2">
@@ -165,7 +163,7 @@ export function ClientHome({
                         year: 'numeric',
                       })}
                     </span>
-                    <span>•</span>
+                    <span>|</span>
                     <span className="inline-flex items-center gap-1">
                       <Clock3 className="h-3.5 w-3.5 text-sky-300" />
                       {post.readTime}
@@ -193,7 +191,7 @@ export function ClientHome({
                     ))}
                   </div>
 
-                  <div className="mt-5 flex items-center justify-between gap-3 border-t border-white/10 pt-4">
+                  <div className="mt-5 flex items-center justify-between gap-3 border-t border-sky-950/70 pt-4">
                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
                       By {post.author}
                     </span>
@@ -212,7 +210,7 @@ export function ClientHome({
         </div>
       </section>
 
-      <footer className="mt-16 border-t border-white/10 pt-10">
+      <footer className="mt-16 border-t border-sky-950/70 pt-10">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
           <div className="space-y-5">
             <div className="inline-flex items-center gap-2">
@@ -245,7 +243,7 @@ export function ClientHome({
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.3em] text-white">Categories</p>
             <div className="mt-5 flex flex-col gap-4 text-slate-400">
-              {['All News', ...initialCategories.map((cat) => cat.name)].map((label) => (
+              {categoryFilters.map((label) => (
                 <button
                   key={label}
                   onClick={() =>
@@ -276,10 +274,10 @@ export function ClientHome({
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-7 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} GtaFans. All rights reserved.</p>
+        <div className="mt-12 flex flex-col gap-4 border-t border-sky-950/70 pt-7 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
+          <p>(c) {new Date().getFullYear()} GtaFans. All rights reserved.</p>
           <p className="inline-flex items-center gap-2">
-            Made with <span className="text-fuchsia-400">♥</span> for GTA fans worldwide
+            Made with <span className="text-fuchsia-400">love</span> for GTA fans worldwide
           </p>
         </div>
       </footer>
@@ -301,8 +299,8 @@ function FilterChip({
       onClick={onClick}
       className={`rounded-full border px-5 py-3 text-sm font-semibold transition ${
         active
-          ? 'border-white/60 bg-white/10 text-white shadow-[0_0_0_1px_rgba(255,255,255,0.15)]'
-          : 'border-white/12 bg-transparent text-slate-400 hover:border-white/30 hover:text-white'
+          ? 'border-sky-400/60 bg-sky-400/10 text-white shadow-[0_0_0_1px_rgba(56,189,248,0.14)]'
+          : 'border-sky-950/70 bg-transparent text-slate-400 hover:border-sky-700/40 hover:text-white'
       }`}
     >
       {children}
@@ -316,7 +314,7 @@ function FooterButton({ label, href }: Readonly<{ label: string; href: string }>
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-lg font-bold text-white transition hover:border-fuchsia-400/25 hover:bg-white/[0.05]"
+      className="flex items-center justify-between rounded-2xl border border-sky-950/70 bg-white/[0.03] px-5 py-4 text-lg font-bold text-white transition hover:border-sky-700/40 hover:bg-white/[0.05]"
     >
       <span>{label}</span>
       <ExternalLink className="h-5 w-5 text-slate-300" />

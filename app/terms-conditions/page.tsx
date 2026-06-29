@@ -35,7 +35,7 @@ export default function TermsConditionsPage() {
         <SectionHeading eyebrow="Use of Service" title="Community participation rules" />
         <div className="grid gap-3 md:grid-cols-2">
           {terms.map((term) => (
-            <div key={term.title} className="rounded-3xl border border-white/8 bg-white/[0.03] p-4">
+            <div key={term.title} className="rounded-3xl border border-sky-950/70 bg-sky-950/12 p-4">
               <term.icon className="h-5 w-5 text-fuchsia-200" />
               <p className="mt-3 text-sm font-bold text-white">{term.title}</p>
               <p className="mt-2 text-sm leading-7 text-slate-400">{term.text}</p>
