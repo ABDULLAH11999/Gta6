@@ -40,26 +40,26 @@ export function AdminLoginForm() {
         const formData = new FormData(event.currentTarget)
         void submit(String(formData.get('username') || ''), String(formData.get('password') || ''))
       }}
-      className="mt-6 space-y-4 rounded-xl border border-border bg-panel p-4 sm:p-6"
+      className="mt-6 space-y-4 rounded-[1.4rem] border border-white/10 bg-[#111111] p-5 sm:p-6"
     >
       <input
         name="username"
         placeholder="Admin username or email"
         required
-        className="w-full rounded-xl border border-border bg-bg/80 px-4 py-3 text-sm text-text outline-none transition-all placeholder:text-muted font-medium dark:bg-panel-2/70 focus:border-accent/40 focus:bg-panel focus:shadow-[0_0_10px_rgba(59,130,246,0.1)]"
+        className="w-full rounded-xl border border-white/10 bg-black px-4 py-3 text-sm font-medium text-white outline-none transition-all placeholder:text-zinc-500 focus:border-white/30 focus:bg-[#0d0d0d]"
       />
       <input
         name="password"
         type="password"
         placeholder="Admin password"
         required
-        className="w-full rounded-xl border border-border bg-bg/80 px-4 py-3 text-sm text-text outline-none transition-all placeholder:text-muted font-medium dark:bg-panel-2/70 focus:border-accent/40 focus:bg-panel focus:shadow-[0_0_10px_rgba(59,130,246,0.1)]"
+        className="w-full rounded-xl border border-white/10 bg-black px-4 py-3 text-sm font-medium text-white outline-none transition-all placeholder:text-zinc-500 focus:border-white/30 focus:bg-[#0d0d0d]"
       />
-      {error ? <p className="text-xs font-semibold text-rose-500">{error}</p> : null}
+      {error ? <p className="text-xs font-semibold text-zinc-300">{error}</p> : null}
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 px-5 py-3 text-sm font-bold text-white shadow-md disabled:opacity-70 transition-all hover:shadow-[0_0_12px_rgba(59,130,246,0.25)]"
+        className="w-full rounded-xl border border-white/10 bg-white px-5 py-3 text-sm font-bold text-black transition-all hover:bg-zinc-100 disabled:opacity-70"
       >
         <span className="inline-flex items-center justify-center gap-2">
           {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}

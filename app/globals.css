@@ -22,6 +22,8 @@
 html {
   background: rgb(var(--bg));
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  scrollbar-gutter: stable;
   overscroll-behavior-y: none;
 }
 
@@ -42,6 +44,7 @@ body {
   background-attachment: scroll;
   background-repeat: no-repeat;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }

@@ -9,7 +9,7 @@ export function GlassPanel({
 }>) {
   return (
     <section
-      className={`rounded-[1.8rem] border border-sky-950/80 bg-[rgba(10,8,20,0.82)] p-5 text-white shadow-[0_22px_60px_rgba(0,0,0,0.32)] transition-all duration-300 hover:border-sky-700/40 sm:p-6 ${className}`}
+      className={`rounded-[1.8rem] border border-white/10 bg-[#131313] p-5 text-white shadow-[0_20px_50px_rgba(0,0,0,0.28)] transition-all duration-300 sm:p-6 ${className}`}
     >
       {children}
     </section>
@@ -27,9 +27,9 @@ export function SectionHeading({
 }>) {
   return (
     <div className="space-y-1.5">
-      <p className="text-[10px] uppercase font-black tracking-[0.28em] text-fuchsia-200">{eyebrow}</p>
+      <p className="text-[10px] font-black uppercase tracking-[0.28em] text-zinc-500">{eyebrow}</p>
       <h2 className="font-display text-2xl font-black tracking-tight text-white sm:text-3xl">{title}</h2>
-      {detail ? <p className="max-w-2xl text-sm leading-7 text-slate-400">{detail}</p> : null}
+      {detail ? <p className="max-w-2xl text-sm leading-7 text-zinc-400">{detail}</p> : null}
     </div>
   )
 }
@@ -42,18 +42,12 @@ export function StatusBadge({
   tone?: 'violet' | 'blue' | 'emerald' | 'rose' | 'amber' | 'yellow'
 }>) {
   const tones = {
-    violet:
-      'border-violet-400/30 bg-violet-500/12 text-violet-100 shadow-[0_0_0_1px_rgba(0,0,0,0.08)]',
-    blue:
-      'border-sky-400/30 bg-sky-500/12 text-sky-100 shadow-[0_0_0_1px_rgba(0,0,0,0.08)]',
-    emerald:
-      'border-emerald-400/30 bg-emerald-500/12 text-emerald-100 shadow-[0_0_0_1px_rgba(0,0,0,0.08)]',
-    rose:
-      'border-rose-400/30 bg-rose-500/12 text-rose-100 shadow-[0_0_0_1px_rgba(0,0,0,0.08)]',
-    amber:
-      'border-amber-400/30 bg-amber-500/12 text-amber-100 shadow-[0_0_0_1px_rgba(0,0,0,0.08)]',
-    yellow:
-      'border-yellow-400/30 bg-yellow-500/12 text-yellow-100 shadow-[0_0_0_1px_rgba(0,0,0,0.08)]',
+    violet: 'border-white/10 bg-white/5 text-white',
+    blue: 'border-white/10 bg-white/5 text-white',
+    emerald: 'border-white/10 bg-white/5 text-white',
+    rose: 'border-white/10 bg-white/5 text-white',
+    amber: 'border-white/10 bg-white/5 text-white',
+    yellow: 'border-white/10 bg-white/5 text-white',
   }
 
   return (

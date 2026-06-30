@@ -50,8 +50,8 @@ export function ClientHome({
 
   return (
     <div className="relative mx-auto flex w-full max-w-[1440px] flex-col px-4 pb-12 pt-4 sm:px-6 lg:px-8">
-      <section className="relative overflow-hidden rounded-[2.2rem] bg-[linear-gradient(180deg,rgba(10,8,24,0.96),rgba(10,12,38,0.98))] px-5 py-8 shadow-[0_24px_90px_rgba(0,0,0,0.22)] sm:px-8 sm:py-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,0,153,0.14),transparent_30%),radial-gradient(circle_at_center,rgba(123,92,255,0.22),transparent_56%)]" />
+      <section className="relative overflow-hidden rounded-[2.2rem] bg-[rgba(8,5,18,0.88)] px-5 py-8 sm:px-8 sm:py-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.03),transparent_30%),radial-gradient(circle_at_center,rgba(255,46,166,0.08),transparent_56%)]" />
         <div className="relative flex items-center justify-between gap-3">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="rounded-full border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-white/90">
@@ -75,10 +75,7 @@ export function ClientHome({
             GTAFANS
           </p>
           <h1 className="mt-5 text-[clamp(3.25rem,10vw,7.5rem)] font-black tracking-[-0.08em] text-white">
-            <span className="bg-gradient-to-r from-[#7f71ff] via-[#ff2ea6] to-[#ff7f61] bg-clip-text text-transparent">
-              GTA 6
-            </span>{' '}
-            NEWS
+            GTA 6 NEWS
           </h1>
           <p className="mt-4 max-w-4xl text-sm leading-7 text-slate-300 sm:text-xl sm:leading-9">
             GTA 6 trailer breakdowns, gameplay analysis, character deep-dives, location guides, resources, community insights, and everything Vice City.
