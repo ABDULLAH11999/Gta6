@@ -5,10 +5,7 @@ import { getCategoryFilters } from '@/lib/site-data'
 
 function BrandWordmark() {
   return (
-    <div className="inline-flex items-center gap-2">
-      <span className="rounded-full border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-white/90">
-        G
-      </span>
+    <div className="inline-flex items-center">
       <span className="font-display text-[16px] font-black tracking-[0.14em] text-white sm:text-[18px]">
         GTA
         <span className="bg-gradient-to-b from-[#8d7cff] via-[#ff2ea6] to-[#ff8b5e] bg-clip-text text-transparent">

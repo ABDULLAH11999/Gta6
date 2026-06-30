@@ -54,10 +54,7 @@ export function ClientHome({
       <section className="relative overflow-hidden rounded-[2.2rem] bg-[rgb(var(--bg))] px-5 py-8 shadow-none sm:px-8 sm:py-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.02),transparent_30%),radial-gradient(circle_at_center,rgba(255,46,166,0.05),transparent_56%)]" />
         <div className="relative flex items-center justify-between gap-3">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <span className="rounded-full border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-white/90">
-              G
-            </span>
+          <Link href="/" className="inline-flex items-center">
             <span className="font-display text-sm font-black tracking-[0.22em] text-white sm:text-base">
               GTA
               <span className="bg-gradient-to-b from-[#8d7cff] via-[#ff2ea6] to-[#ff8b5e] bg-clip-text text-transparent">
@@ -146,7 +143,6 @@ export function ClientHome({
                     alt={post.heroImageAlt}
                     className="h-[220px] w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-[238px]"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04),rgba(8,7,20,0.88))]" />
                 </div>
 
                 <div className="p-5 sm:p-6">
@@ -209,10 +205,7 @@ export function ClientHome({
       <footer className="mt-16 border-t border-sky-950/70 pt-10">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
           <div className="space-y-5">
-            <div className="inline-flex items-center gap-2">
-              <span className="rounded-full border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-white/90">
-                G
-              </span>
+            <div className="inline-flex items-center">
               <span className="font-display text-[16px] font-black tracking-[0.14em] text-white sm:text-[18px]">
                 GTA
                 <span className="bg-gradient-to-b from-[#8d7cff] via-[#ff2ea6] to-[#ff8b5e] bg-clip-text text-transparent">
