@@ -50,8 +50,8 @@ export function ClientHome({
 
   return (
     <div className="relative mx-auto flex w-full max-w-[1440px] flex-col px-4 pb-12 pt-4 sm:px-6 lg:px-8">
-      <section className="relative overflow-hidden rounded-[2.2rem] bg-[rgba(8,5,18,0.88)] px-5 py-8 sm:px-8 sm:py-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.03),transparent_30%),radial-gradient(circle_at_center,rgba(255,46,166,0.08),transparent_56%)]" />
+      <section className="relative overflow-hidden rounded-[2.2rem] bg-[rgb(var(--bg))] px-5 py-8 shadow-none sm:px-8 sm:py-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.02),transparent_30%),radial-gradient(circle_at_center,rgba(255,46,166,0.05),transparent_56%)]" />
         <div className="relative flex items-center justify-between gap-3">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="rounded-full border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-white/90">
