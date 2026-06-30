@@ -47,8 +47,8 @@ export async function SiteShell({
         </div>
 
         {title ? (
-          <section className="relative mt-4 overflow-hidden rounded-[2rem] bg-[rgba(8,5,18,0.84)] px-5 py-8 sm:px-8 sm:py-10">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.03),transparent_30%),radial-gradient(circle_at_center,rgba(123,92,255,0.12),transparent_56%)]" />
+          <section className="relative mt-4 overflow-hidden rounded-[2rem] bg-transparent px-5 py-8 sm:px-8 sm:py-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.015),transparent_30%),radial-gradient(circle_at_center,rgba(123,92,255,0.06),transparent_56%)]" />
             <div className="relative mx-auto flex max-w-[1020px] flex-col items-center text-center">
               <p className="text-[11px] font-black uppercase tracking-[0.34em] text-fuchsia-200/90">
                 {settings.brandMark ?? 'GTAFANS'}
