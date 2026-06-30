@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { ArrowRight, CalendarDays, Clock3, ExternalLink, Gamepad2, Sparkles, Users, MapPin, BookOpen } from 'lucide-react'
 import type { BlogCategory, BlogPostRecord } from '@/lib/types'
+import { CountdownPill } from '@/components/countdown-pill'
 import { getCategoryFilters } from '@/lib/site-data'
 
 function categoryMeta(slug: string) {
@@ -65,9 +66,7 @@ export function ClientHome({
             </span>
           </Link>
 
-          <div className="rounded-full border border-fuchsia-400/35 bg-[linear-gradient(90deg,rgba(61,13,68,0.9),rgba(17,47,71,0.9))] px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-rose-100 sm:text-[11px]">
-            GTA VI | Nov 19 2026 | 146 days
-          </div>
+          <CountdownPill launchDate="2026-11-19T00:00:00.000Z" />
         </div>
 
         <div className="relative mx-auto mt-8 flex max-w-[1100px] flex-col items-center text-center sm:mt-10">

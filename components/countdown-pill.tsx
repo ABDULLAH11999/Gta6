@@ -3,11 +3,14 @@
 import { useEffect, useState } from 'react'
 
 function formatDaysRemaining(targetIso?: string) {
-  const target = new Date(targetIso ?? '2026-11-19T00:00:00.000Z').getTime()
-  const diff = target - Date.now()
-  if (diff <= 0) return 'GTA VI • Now live'
+  const target = new Date(targetIso ?? '2026-11-19T00:00:00.000Z')
+  const now = new Date()
+  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  const startOfTarget = new Date(target.getFullYear(), target.getMonth(), target.getDate())
+  const diff = startOfTarget.getTime() - startOfToday.getTime()
+  if (diff < 0) return 'GTA VI • Now live'
 
-  const days = Math.ceil(diff / (1000 * 60 * 60 * 24))
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1
   return `GTA VI • Nov 19 2026 • ${days} days`
 }
 
