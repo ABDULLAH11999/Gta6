@@ -1,6 +1,7 @@
 import { Mail, MapPin, MessageCircleMore } from 'lucide-react'
 import { ContactForm } from '@/components/contact-form'
 import { SiteShell } from '@/components/site-shell'
+import { GlassInset, GlassPanel, SectionHeading } from '@/components/ui/glass'
 
 export default function ContactPage() {
   return (
@@ -9,20 +10,17 @@ export default function ContactPage() {
       subtitle="Use this page for feedback, corrections, partnership questions, or support around the site and admin workflow."
     >
       <div className="mx-auto grid max-w-4xl gap-6 py-2 lg:grid-cols-[1.05fr_0.95fr]">
-        <section className="rounded-[2rem] bg-white/[0.03] p-6 sm:p-8">
-          <p className="text-[11px] font-black uppercase tracking-[0.34em] text-zinc-400">Contact Form</p>
-          <h2 className="mt-3 text-2xl font-black tracking-[-0.04em] text-white sm:text-3xl">
-            Send a message
-          </h2>
+        <GlassPanel className="sm:p-8">
+          <SectionHeading eyebrow="Contact Form" title="Send a message" />
           <p className="mt-4 text-sm leading-8 text-slate-300 sm:text-base">
             Send a note if you want to report an issue, suggest a new category, or discuss collaboration.
           </p>
           <div className="pt-5">
             <ContactForm />
           </div>
-        </section>
+        </GlassPanel>
 
-        <section className="space-y-4 rounded-[2rem] bg-white/[0.03] p-6 sm:p-8 lg:pl-8">
+        <GlassInset className="space-y-4 rounded-[1.8rem] p-6 sm:p-8 lg:pl-8">
           <p className="text-[11px] font-black uppercase tracking-[0.34em] text-zinc-400">Reach Us</p>
           <h3 className="text-lg font-bold text-white">Contact details</h3>
           <div className="space-y-4 text-sm leading-7 text-slate-300">
@@ -30,7 +28,7 @@ export default function ContactPage() {
             <InfoLine icon={MapPin} label="Coverage" value="Global GTA 6 fan community" />
             <InfoLine icon={MessageCircleMore} label="Response" value="Support and editorial review" />
           </div>
-        </section>
+        </GlassInset>
       </div>
     </SiteShell>
   )

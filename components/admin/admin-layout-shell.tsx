@@ -4,20 +4,26 @@ import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation'
 import {
   BadgeCheck,
+  Contact,
   LayoutDashboard,
   ListTree,
-  LogOut,
   Newspaper,
   Settings2,
   Shapes,
   Sparkles,
+  Users,
+  Waypoints,
 } from 'lucide-react'
+import { AdminSignoutButton } from '@/components/admin/admin-signout-button'
 import { CountdownPill } from '@/components/countdown-pill'
 
 const adminMenu = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/admin/posts', label: 'Blog Posts', icon: Newspaper },
   { href: '/admin/categories', label: 'Categories', icon: ListTree },
+  { href: '/admin/visitors', label: 'Visitors', icon: Waypoints },
+  { href: '/admin/users', label: 'Users', icon: Users },
+  { href: '/admin/contact-us', label: 'Contact', icon: Contact },
   { href: '/admin/settings', label: 'Settings', icon: Settings2 },
   { href: '/admin/media', label: 'Media', icon: Shapes },
 ]
@@ -99,6 +105,29 @@ export function AdminLayoutShell({
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
+              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] p-1 lg:hidden">
+                {adminMenu.slice(0, 4).map(({ href, label, icon: Icon }) => {
+                  const active =
+                    href === '/admin'
+                      ? !segment
+                      : segment === href.replace('/admin/', '') ||
+                        segment?.startsWith(href.replace('/admin/', ''))
+
+                  return (
+                    <Link
+                      key={href}
+                      href={href}
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-full transition ${
+                        active ? 'bg-white text-black' : 'text-zinc-400 hover:bg-white/5 hover:text-white'
+                      }`}
+                      aria-label={label}
+                      title={label}
+                    >
+                      <Icon className={`h-4 w-4 ${active ? 'text-black' : 'text-current'}`} />
+                    </Link>
+                  )
+                })}
+              </div>
               <div className="hidden sm:block">
                 <CountdownPill launchDate="2026-11-19T00:00:00.000Z" />
               </div>
@@ -109,13 +138,7 @@ export function AdminLayoutShell({
                 <BadgeCheck className="h-4 w-4 text-black" />
                 Public site
               </Link>
-              <Link
-                href="/admin/login"
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#141414] px-4 py-2.5 text-xs font-black uppercase tracking-[0.22em] text-white transition hover:bg-[#1c1c1c]"
-              >
-                <LogOut className="h-4 w-4 text-white" />
-                Sign out
-              </Link>
+              <AdminSignoutButton />
             </div>
           </div>
         </header>

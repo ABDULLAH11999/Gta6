@@ -2,38 +2,34 @@
 
 import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
-
-const visitorStorageKey = 'livepatch_visitor_id'
+import { VISITOR_STORAGE_KEY } from '@/lib/constants'
 
 function getOrCreateVisitorId() {
   if (typeof window === 'undefined') return ''
 
-  const existing = window.localStorage.getItem(visitorStorageKey)
+  const existing = window.localStorage.getItem(VISITOR_STORAGE_KEY)
   if (existing) {
     return existing
   }
 
   const created = window.crypto?.randomUUID?.() || `visitor_${Math.random().toString(36).slice(2, 10)}`
-  window.localStorage.setItem(visitorStorageKey, created)
+  window.localStorage.setItem(VISITOR_STORAGE_KEY, created)
   return created
 }
 
 export function VisitorTracker() {
   const pathname = usePathname()
-  const hasMounted = useRef(false)
   const lastTrackedUrl = useRef('')
 
   useEffect(() => {
     const search = window.location.search.replace(/^\?/, '')
     const url = search ? `${pathname}?${search}` : pathname
 
-    if (!hasMounted.current) {
-      hasMounted.current = true
-      lastTrackedUrl.current = url
-      return
-    }
-
     if (!url || lastTrackedUrl.current === url) {
+      if (!lastTrackedUrl.current) {
+        lastTrackedUrl.current = url
+        getOrCreateVisitorId()
+      }
       return
     }
 

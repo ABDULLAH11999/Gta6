@@ -2,9 +2,9 @@ import crypto from 'crypto'
 import bcrypt from 'bcryptjs'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
+import { ADMIN_SESSION_COOKIE } from '@/lib/constants'
 import { getUsers, saveUsers } from '@/lib/db'
 
-const adminCookie = 'gtafans_admin_session'
 const fallbackAdminUsername = 'admin'
 const fallbackAdminPassword = 'admin7940'
 
@@ -49,7 +49,7 @@ export async function verifyAdminCredentials(username: string, password: string)
 
 export function createAdminSession(response: NextResponse) {
   const token = crypto.randomBytes(32).toString('hex')
-  response.cookies.set(adminCookie, token, {
+  response.cookies.set(ADMIN_SESSION_COOKIE, token, {
     httpOnly: true,
     sameSite: 'lax',
     path: '/',
@@ -58,7 +58,7 @@ export function createAdminSession(response: NextResponse) {
 }
 
 export function clearAdminSession(response: NextResponse) {
-  response.cookies.set(adminCookie, '', {
+  response.cookies.set(ADMIN_SESSION_COOKIE, '', {
     httpOnly: true,
     sameSite: 'lax',
     path: '/',
@@ -68,7 +68,7 @@ export function clearAdminSession(response: NextResponse) {
 
 export function getCurrentAdmin() {
   ensureAdminUser()
-  const hasSession = cookies().get(adminCookie)?.value
+  const hasSession = cookies().get(ADMIN_SESSION_COOKIE)?.value
   if (!hasSession) return null
   const users = getUsers()
   const admin = users.find((u) => u.role === 'admin')

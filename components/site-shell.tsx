@@ -39,7 +39,7 @@ export async function SiteShell({
       </div>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-4 pb-12 pt-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-3 py-1">
+        <div className="flex items-center justify-between gap-3 rounded-[1.6rem] border border-white/10 bg-white/[0.03] px-4 py-3 backdrop-blur-sm">
           <Link href="/" className="inline-flex items-center gap-2">
             <BrandWordmark />
           </Link>
@@ -47,8 +47,8 @@ export async function SiteShell({
         </div>
 
         {title ? (
-          <section className="relative mt-4 overflow-hidden rounded-[2rem] bg-transparent px-5 py-8 sm:px-8 sm:py-10">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.015),transparent_30%),radial-gradient(circle_at_center,rgba(123,92,255,0.06),transparent_56%)]" />
+          <section className="relative mt-4 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] px-5 py-8 shadow-[0_20px_50px_rgba(0,0,0,0.24)] backdrop-blur-sm sm:px-8 sm:py-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.02),transparent_30%),radial-gradient(circle_at_center,rgba(123,92,255,0.08),transparent_56%)]" />
             <div className="relative mx-auto flex max-w-[1020px] flex-col items-center text-center">
               <p className="text-[11px] font-black uppercase tracking-[0.34em] text-fuchsia-200/90">
                 {settings.brandMark ?? 'GTAFANS'}
@@ -67,7 +67,7 @@ export async function SiteShell({
 
         <section className="relative min-h-[420px]">{children}</section>
 
-        <footer className="mt-16 border-t border-sky-950/70 pt-10">
+        <footer className="mt-16 rounded-[2rem] border border-white/10 bg-white/[0.03] px-5 pt-10 backdrop-blur-sm sm:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
             <div className="space-y-5">
               <BrandWordmark />
@@ -114,7 +114,7 @@ export async function SiteShell({
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col gap-4 border-t border-sky-950/70 pt-7 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
+          <div className="mt-12 flex flex-col gap-4 border-t border-white/10 py-7 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
             <p>(c) {new Date().getFullYear()} GtaFans. All rights reserved.</p>
             <p className="inline-flex items-center gap-2">
               Made with <span className="text-fuchsia-400">love</span> for GTA fans worldwide
@@ -132,7 +132,7 @@ function FooterButton({ label, href }: Readonly<{ label: string; href: string }>
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="flex items-center justify-between rounded-2xl border border-sky-950/70 bg-white/[0.03] px-5 py-4 text-lg font-bold text-white transition hover:border-sky-700/40 hover:bg-white/[0.05]"
+      className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-lg font-bold text-white transition hover:border-white/20 hover:bg-white/[0.05]"
     >
       <span>{label}</span>
       <span className="text-slate-300">-&gt;</span>

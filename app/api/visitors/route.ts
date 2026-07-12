@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 import { NextResponse } from 'next/server'
-import { getVisitors, refreshDatabaseSnapshot, saveVisitors } from '@/lib/db'
+import { getVisitors, saveVisitors } from '@/lib/db'
 import type { VisitorRecord } from '@/lib/types'
 
 function firstHeaderValue(value: string | null | undefined) {
@@ -55,8 +55,26 @@ export async function POST(request: Request) {
   const ip = String(body.ip || resolveIp(headers)).trim() || (visitorId ? `visitor-${visitorId.slice(0, 8)}` : 'unknown')
   const session = String(body.session || visitorId || `sess_${crypto.randomBytes(3).toString('hex')}`)
 
-  await refreshDatabaseSnapshot()
   const existing = getVisitors()
+  const recentMatch = existing.find((visitor) => {
+    if (visitor.session !== session) return false
+    if (visitor.page !== `${page}${search}`) return false
+
+    const elapsed = Date.now() - new Date(visitor.timestamp).getTime()
+    return elapsed >= 0 && elapsed < 60000
+  })
+
+  if (recentMatch) {
+    return NextResponse.json({
+      success: true,
+      visitor: {
+        ...recentMatch,
+        userAgent,
+      },
+      deduped: true,
+    })
+  }
+
   const record: VisitorRecord = {
     id: crypto.randomUUID(),
     ip,

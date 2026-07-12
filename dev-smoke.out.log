@@ -1,0 +1,30 @@
+
+> gtafans@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 13.9s
+ ○ Compiling /api/visitors ...
+ ✓ Compiled /api/visitors in 2.5s (65 modules)
+ POST /api/visitors 200 in 25791ms
+ POST /api/visitors 200 in 14690ms
+ ✓ Compiled in 244ms (65 modules)
+ POST /api/visitors 200 in 14649ms
+ POST /api/visitors 200 in 11683ms
+ ✓ Compiled in 349ms (65 modules)
+ POST /api/visitors 200 in 15537ms
+ POST /api/visitors 200 in 21ms
+ ○ Compiling /api/admin/login ...
+ ✓ Compiled /api/admin/login in 685ms (80 modules)
+ POST /api/admin/login 200 in 1942ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 1133ms (73 modules)
+ ○ Compiling /admin ...
+ ✓ Compiled /admin in 22.4s (665 modules)
+ GET /admin 200 in 33581ms
+ ✓ Compiled /api/admin/logout in 460ms (361 modules)
+ POST /api/admin/logout 200 in 645ms

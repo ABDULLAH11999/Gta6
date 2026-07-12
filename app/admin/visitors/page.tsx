@@ -1,5 +1,5 @@
 import { LiveRefresh } from '@/components/admin/live-refresh'
-import { GlassPanel, SectionHeading, StatusBadge } from '@/components/ui/glass'
+import { GlassInset, GlassPanel, SectionHeading, StatusBadge } from '@/components/ui/glass'
 import { getVisitors, refreshDatabaseSnapshot } from '@/lib/db'
 
 export const dynamic = 'force-dynamic'
@@ -35,11 +35,15 @@ export default async function AdminVisitorsPage({
     const matchesIp = !ip || visitor.ip.toLowerCase().includes(ip)
     const matchesPage = !page || visitor.page.toLowerCase().includes(page)
     const matchesDate = !date || `${visitor.visitedAt} ${visitor.timestamp}`.toLowerCase().includes(date)
+
     return matchesMode && matchesIp && matchesPage && matchesDate
   })
 
+  const uniqueVisitors = new Set(visitors.map((visitor) => visitor.ip)).size
+  const returnVisitors = visitors.filter((visitor) => visitor.type === 'Return').length
+
   const fieldClass =
-    'w-full rounded-xl border border-border bg-bg/80 px-3.5 py-2.5 text-xs text-text outline-none transition-all font-semibold placeholder:text-muted dark:bg-panel-2/70 focus:border-accent/40 focus:bg-panel focus:shadow-[0_0_10px_rgba(59,130,246,0.1)]'
+    'w-full rounded-xl border border-white/10 bg-black/30 px-3.5 py-2.5 text-xs font-semibold text-white outline-none transition-all placeholder:text-zinc-500 focus:border-white/20 focus:bg-black/40'
 
   return (
     <div className="space-y-6">
@@ -49,9 +53,16 @@ export default async function AdminVisitorsPage({
         <SectionHeading
           eyebrow="Visitor Tracking"
           title="Traffic quality and entry point analysis"
-          detail="IP tracking, source analysis, and identifying which issue pages or support pages attract useful traffic."
+          detail="IP tracking, source analysis, and identifying which pages attract useful traffic."
         />
       </GlassPanel>
+
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <MetricCard label="Total events" value={visitors.length} />
+        <MetricCard label="Visible rows" value={filtered.length} />
+        <MetricCard label="Unique visitors" value={uniqueVisitors} />
+        <MetricCard label="Returning visits" value={returnVisitors} />
+      </div>
 
       <GlassPanel>
         <form className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5" method="get">
@@ -64,35 +75,35 @@ export default async function AdminVisitorsPage({
             <option value="new">New visitors</option>
             <option value="return">Returning visitors</option>
           </select>
-          <button className="rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-2.5 text-xs font-bold text-white shadow-md transition-all hover:from-blue-700 hover:to-cyan-600 hover:shadow-[0_0_10px_rgba(59,130,246,0.25)]">
+          <button className="rounded-xl border border-white/10 bg-white px-5 py-2.5 text-xs font-bold text-black transition hover:bg-zinc-100">
             Apply filters
           </button>
         </form>
 
-        <div className="mb-4 flex items-center justify-between text-xs text-muted">
+        <div className="mb-4 flex items-center justify-between text-xs text-zinc-400">
           <span className="font-semibold">{filtered.length} visitors shown</span>
           <span className="font-semibold">Unique mode deduplicates by IP</span>
         </div>
 
         <div className="space-y-3 md:hidden">
           {filtered.map((visitor) => (
-            <div key={visitor.id} className="rounded-xl border border-border bg-panel p-4">
+            <GlassInset key={visitor.id} className="rounded-xl">
               <div className="flex items-center justify-between gap-2">
-                <p className="text-sm font-bold text-text">{visitor.ip}</p>
+                <p className="text-sm font-bold text-white">{visitor.ip}</p>
                 <StatusBadge label={visitor.type} tone={visitor.type === 'New' ? 'emerald' : 'blue'} />
               </div>
-              <p className="mt-2 text-xs text-muted">{visitor.location}</p>
-              <p className="mt-2 break-all text-xs font-semibold text-text">{visitor.page}</p>
-              <p className="mt-2 text-[10px] text-muted">
-                {visitor.referrer} - {visitor.visitedAt}
+              <p className="mt-2 text-xs text-zinc-400">{visitor.location}</p>
+              <p className="mt-2 break-all text-xs font-semibold text-white">{visitor.page}</p>
+              <p className="mt-2 text-[10px] text-zinc-500">
+                {visitor.referrer} | {visitor.visitedAt}
               </p>
-            </div>
+            </GlassInset>
           ))}
         </div>
 
-        <div className="hidden overflow-hidden rounded-xl border border-border md:block">
-          <table className="min-w-full divide-y divide-border text-left text-xs font-semibold text-text">
-            <thead className="bg-panel-2/30 text-muted">
+        <div className="hidden overflow-hidden rounded-xl border border-white/10 md:block">
+          <table className="min-w-full divide-y divide-white/10 text-left text-xs font-semibold text-white">
+            <thead className="bg-white/[0.04] text-zinc-400">
               <tr>
                 <th className="px-4 py-3.5">IP</th>
                 <th className="px-4 py-3.5">Location</th>
@@ -102,14 +113,14 @@ export default async function AdminVisitorsPage({
                 <th className="px-4 py-3.5">Type</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
+            <tbody className="divide-y divide-white/10">
               {filtered.map((visitor) => (
-                <tr key={visitor.id} className="hover:bg-panel-2/10 transition-colors">
-                  <td className="px-4 py-4 text-text">{visitor.ip}</td>
-                  <td className="px-4 py-4 text-muted">{visitor.location}</td>
-                  <td className="px-4 py-4 text-muted">{visitor.page}</td>
-                  <td className="px-4 py-4 text-muted">{visitor.referrer}</td>
-                  <td className="px-4 py-4 text-muted">{visitor.visitedAt}</td>
+                <tr key={visitor.id} className="transition-colors hover:bg-white/[0.03]">
+                  <td className="px-4 py-4 text-white">{visitor.ip}</td>
+                  <td className="px-4 py-4 text-zinc-400">{visitor.location}</td>
+                  <td className="px-4 py-4 text-zinc-400">{visitor.page}</td>
+                  <td className="px-4 py-4 text-zinc-400">{visitor.referrer}</td>
+                  <td className="px-4 py-4 text-zinc-400">{visitor.visitedAt}</td>
                   <td className="px-4 py-4">
                     <StatusBadge label={visitor.type} tone={visitor.type === 'New' ? 'emerald' : 'blue'} />
                   </td>
@@ -120,5 +131,14 @@ export default async function AdminVisitorsPage({
         </div>
       </GlassPanel>
     </div>
+  )
+}
+
+function MetricCard({ label, value }: Readonly<{ label: string; value: number }>) {
+  return (
+    <GlassPanel className="p-5">
+      <p className="text-[10px] font-black uppercase tracking-[0.28em] text-zinc-500">{label}</p>
+      <p className="mt-3 text-3xl font-black text-white">{value}</p>
+    </GlassPanel>
   )
 }

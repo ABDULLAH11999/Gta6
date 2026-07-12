@@ -1,5 +1,9 @@
 import type { ReactNode } from 'react'
 
+function cx(...classes: Array<string | false | null | undefined>) {
+  return classes.filter(Boolean).join(' ')
+}
+
 export function GlassPanel({
   children,
   className = '',
@@ -9,10 +13,32 @@ export function GlassPanel({
 }>) {
   return (
     <section
-      className={`rounded-[1.8rem] border border-white/10 bg-[#131313] p-5 text-white shadow-[0_20px_50px_rgba(0,0,0,0.28)] transition-all duration-300 sm:p-6 ${className}`}
+      className={cx(
+        'rounded-[1.8rem] border border-white/10 bg-white/[0.04] p-5 text-white shadow-[0_20px_50px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-all duration-300 sm:p-6',
+        className,
+      )}
     >
       {children}
     </section>
+  )
+}
+
+export function GlassInset({
+  children,
+  className = '',
+}: Readonly<{
+  children: ReactNode
+  className?: string
+}>) {
+  return (
+    <div
+      className={cx(
+        'rounded-[1.4rem] border border-white/10 bg-black/30 p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]',
+        className,
+      )}
+    >
+      {children}
+    </div>
   )
 }
 

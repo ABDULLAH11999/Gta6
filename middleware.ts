@@ -1,7 +1,5 @@
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server'
-
-const adminSessionCookie = 'livepatch_admin_session'
-const visitorCookie = 'livepatch_visitor_id'
+import { ADMIN_SESSION_COOKIE, VISITOR_COOKIE } from '@/lib/constants'
 
 function createVisitorId() {
   return globalThis.crypto?.randomUUID?.() || `visitor_${Math.random().toString(36).slice(2, 10)}`
@@ -30,7 +28,7 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
   const response = NextResponse.next()
 
   if (pathname.startsWith('/admin')) {
-    const adminCookie = request.cookies.get(adminSessionCookie)?.value
+    const adminCookie = request.cookies.get(ADMIN_SESSION_COOKIE)?.value
     const isAdminLogin = pathname === '/admin/login'
 
     if (isAdminLogin && adminCookie) {
@@ -43,7 +41,7 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
   }
 
   if (shouldTrackVisitor(request)) {
-    const visitorId = request.cookies.get(visitorCookie)?.value || createVisitorId()
+    const visitorId = request.cookies.get(VISITOR_COOKIE)?.value || createVisitorId()
     const resolvedIp =
       request.ip ||
       request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
@@ -52,8 +50,8 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
       ''
     const trackingUrl = new URL('/api/visitors', request.url)
 
-    if (!request.cookies.get(visitorCookie)?.value) {
-      response.cookies.set(visitorCookie, visitorId, {
+    if (!request.cookies.get(VISITOR_COOKIE)?.value) {
+      response.cookies.set(VISITOR_COOKIE, visitorId, {
         httpOnly: true,
         sameSite: 'lax',
         path: '/',
