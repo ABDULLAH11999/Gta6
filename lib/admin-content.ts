@@ -1,5 +1,6 @@
 import crypto from 'crypto'
 import { getCategories } from '@/lib/db'
+import { formatYouTubeEmbedUrl } from '@/lib/youtube'
 import type { BlogCategory, BlogContentBlock, BlogPostRecord } from '@/lib/types'
 
 export function slugify(value: string) {
@@ -71,8 +72,22 @@ export function buildPostRecord(
   const status = String(body.status ?? existing?.status ?? 'draft') as BlogPostRecord['status']
   const heroImage = String(body.heroImage ?? existing?.heroImage ?? '').trim()
   const galleryImages = normalizeList(body.galleryImages)
-  const tags = normalizeList(body.tags)
-  const content = parseBlocks(body.content)
+  const rawHeroVideo = String(body.heroVideoUrl ?? existing?.heroVideoUrl ?? '').trim()
+  const heroVideoUrl = formatYouTubeEmbedUrl(rawHeroVideo) || undefined
+
+  let content = parseBlocks(body.content)
+  if (heroVideoUrl) {
+    content = content.map((block) => {
+      if (block.type === 'video') {
+        return {
+          ...block,
+          src: heroVideoUrl,
+        }
+      }
+      return block
+    })
+  }
+
   const seoTitle = String(body.seoTitle ?? existing?.seoTitle ?? title).trim() || title
   const seoDescription = String(body.seoDescription ?? existing?.seoDescription ?? body.excerpt ?? existing?.excerpt ?? '').trim()
 
@@ -89,7 +104,7 @@ export function buildPostRecord(
     tags,
     heroImage,
     heroImageAlt: String(body.heroImageAlt ?? existing?.heroImageAlt ?? (title || 'Post image')),
-    heroVideoUrl: String(body.heroVideoUrl ?? existing?.heroVideoUrl ?? '').trim() || undefined,
+    heroVideoUrl,
     galleryImages,
     author: String(body.author ?? existing?.author ?? 'Ammo').trim() || 'Ammo',
     status,
@@ -103,9 +118,7 @@ export function buildPostRecord(
     canonicalPath: String(body.canonicalPath ?? existing?.canonicalPath ?? `/blog/${slug}`).trim() || `/blog/${slug}`,
     metaTitle: String(body.metaTitle ?? existing?.metaTitle ?? seoTitle).trim() || seoTitle,
     metaDescription: String(body.metaDescription ?? existing?.metaDescription ?? seoDescription).trim(),
-    videoLinks: body.videoLinks && Array.isArray(body.videoLinks)
-      ? body.videoLinks.map((item) => String(item).trim()).filter(Boolean)
-      : existing?.videoLinks ?? (body.heroVideoUrl ? [String(body.heroVideoUrl)] : []),
+    videoLinks: heroVideoUrl ? [heroVideoUrl] : [],
     imageLinks: heroImage ? [heroImage, ...galleryImages] : galleryImages,
     sourceLinks: Array.isArray(body.sourceLinks)
       ? body.sourceLinks.map((item) => String(item).trim()).filter(Boolean)

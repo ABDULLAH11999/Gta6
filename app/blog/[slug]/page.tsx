@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { CalendarDays, ChevronLeft, Clock3, Play, Sparkles } from 'lucide-react'
 import { SiteShell } from '@/components/site-shell'
-import { getCategories, getPosts } from '@/lib/db'
+import { getCategories, getPosts, refreshDatabaseSnapshot } from '@/lib/db'
+import { formatYouTubeEmbedUrl } from '@/lib/youtube'
 import type { BlogContentBlock } from '@/lib/types'
 
 export const dynamic = 'force-dynamic'
@@ -49,7 +50,8 @@ function getCategoryColors(slug: string) {
   }
 }
 
-export default function BlogPostPage({ params }: Readonly<{ params: { slug: string } }>) {
+export default async function BlogPostPage({ params }: Readonly<{ params: { slug: string } }>) {
+  await refreshDatabaseSnapshot()
   const post = getPosts().find((item) => item.slug === params.slug)
   if (!post) notFound()
 
@@ -57,6 +59,9 @@ export default function BlogPostPage({ params }: Readonly<{ params: { slug: stri
   const category = categories.find((item) => item.id === post.categoryId)
   const categorySlug = post.categorySlug || category?.slug || 'trailers'
   const colors = getCategoryColors(categorySlug)
+
+  const hasVideoInContent = post.content?.some((b) => b.type === 'video')
+  const heroEmbedUrl = formatYouTubeEmbedUrl(post.heroVideoUrl)
 
   const relatedPosts = getPosts()
     .filter((item) => item.slug !== post.slug && item.categoryId === post.categoryId)
@@ -126,8 +131,25 @@ export default function BlogPostPage({ params }: Readonly<{ params: { slug: stri
           ) : null}
 
           <div className="space-y-6 pt-4">
+            {!hasVideoInContent && heroEmbedUrl ? (
+              <div className="my-6 overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+                <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3 text-[11px] font-black uppercase tracking-[0.26em] text-slate-300">
+                  <Play className="h-4 w-4 text-white" />
+                  Official Video & Gameplay Reveal
+                </div>
+                <div className="aspect-video">
+                  <iframe
+                    src={heroEmbedUrl}
+                    title={post.title}
+                    className="h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            ) : null}
             {post.content.map((block, index) => (
-              <BlogBlock key={`${post.slug}-${index}`} block={block} colors={colors} />
+              <BlogBlock key={`${post.slug}-${index}`} block={block} colors={colors} heroVideoUrl={heroEmbedUrl} />
             ))}
           </div>
 
@@ -192,9 +214,11 @@ export default function BlogPostPage({ params }: Readonly<{ params: { slug: stri
 function BlogBlock({
   block,
   colors,
+  heroVideoUrl,
 }: Readonly<{
   block: BlogContentBlock
   colors: { text: string; accentHex?: string; border: string; bg: string }
+  heroVideoUrl?: string
 }>) {
   if (block.type === 'paragraph') {
     return <p className="mb-6 text-base leading-relaxed text-gray-300 md:text-lg">{block.text}</p>
@@ -226,6 +250,7 @@ function BlogBlock({
   }
 
   if (block.type === 'video') {
+    const videoSrc = formatYouTubeEmbedUrl(block.src) || heroVideoUrl || block.src
     return (
       <div className="my-6 overflow-hidden rounded-2xl border border-white/10 bg-black/20">
         <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3 text-[11px] font-black uppercase tracking-[0.26em] text-slate-300">
@@ -234,7 +259,7 @@ function BlogBlock({
         </div>
         <div className="aspect-video">
           <iframe
-            src={block.src}
+            src={videoSrc}
             title={block.title || 'video'}
             className="h-full w-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

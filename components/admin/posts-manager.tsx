@@ -46,7 +46,10 @@ function toDraft(post: BlogPostRecord, categories: BlogCategory[]): Draft {
     tags: post.tags.join(', '),
     heroImage: post.heroImage,
     heroImageAlt: post.heroImageAlt,
-    heroVideoUrl: post.heroVideoUrl ?? '',
+    heroVideoUrl:
+      post.heroVideoUrl ??
+      (post.content.find((b) => b.type === 'video') as { src?: string } | undefined)?.src ??
+      '',
     galleryImages: post.galleryImages.join(', '),
     author: post.author,
     status: post.status,
@@ -358,7 +361,7 @@ export function PostsManager({
                 value={draft.heroVideoUrl}
                 onChange={(e) => setDraft({ ...draft, heroVideoUrl: e.target.value })}
                 className="field-input pr-10"
-                placeholder="e.g. https://www.youtube.com/embed/QdBZY2fkU-0"
+                placeholder="e.g. https://youtu.be/tJbzMqJGH4k or https://www.youtube.com/watch?v=tJbzMqJGH4k"
               />
               <Video className="absolute right-3.5 top-3.5 h-4 w-4 text-pink-400" />
             </div>
