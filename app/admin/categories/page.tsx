@@ -1,4 +1,4 @@
-import { GlassPanel } from '@/components/ui/glass'
+import { GlassPanel, SectionHeading } from '@/components/ui/glass'
 import { CategoriesManager } from '@/components/admin/categories-manager'
 import { getCategories, refreshDatabaseSnapshot } from '@/lib/db'
 
@@ -11,12 +11,12 @@ export default async function AdminCategoriesPage() {
 
   return (
     <div className="space-y-6">
-      <GlassPanel className="space-y-3">
-        <p className="text-[10px] font-black uppercase tracking-[0.28em] text-fuchsia-200">Categories</p>
-        <h3 className="text-2xl font-black text-white">Taxonomy and filter control</h3>
-        <p className="text-sm leading-7 text-slate-400">
-          Keep the homepage chips, category pages, and post assignment structure in sync from one place.
-        </p>
+      <GlassPanel className="border-cyan-500/20 bg-gradient-to-r from-cyan-950/20 via-blue-950/10 to-transparent">
+        <SectionHeading
+          eyebrow="Content Taxonomy"
+          title="Categories & Navigation Filter Control"
+          detail="Configure category names, slugs, neon theme accents, and display order across all frontend filter chips."
+        />
       </GlassPanel>
 
       <CategoriesManager categories={categories} />

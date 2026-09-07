@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { PencilLine, Plus, Trash2 } from 'lucide-react'
+import { PencilLine, Plus, Tag, Trash2 } from 'lucide-react'
 import type { BlogCategory } from '@/lib/types'
 
 type Draft = {
@@ -14,6 +14,15 @@ type Draft = {
   order: number
   icon: string
 }
+
+const ACCENT_PRESETS = [
+  { label: 'Neon Pink / Fuchsia', value: 'from-fuchsia-500 to-pink-500' },
+  { label: 'Electric Cyan / Sky', value: 'from-cyan-500 to-blue-500' },
+  { label: 'Vice Violet / Purple', value: 'from-violet-500 to-purple-500' },
+  { label: 'Sunset Amber / Orange', value: 'from-amber-500 to-orange-500' },
+  { label: 'Leonida Emerald / Teal', value: 'from-emerald-500 to-teal-500' },
+  { label: 'Rose Gold', value: 'from-rose-500 to-pink-600' },
+]
 
 function toDraft(category: BlogCategory): Draft {
   return {
@@ -32,9 +41,9 @@ function emptyDraft(): Draft {
     name: '',
     slug: '',
     description: '',
-    accent: 'from-fuchsia-500 to-violet-500',
+    accent: 'from-fuchsia-500 to-pink-500',
     order: 0,
-    icon: '',
+    icon: 'tag',
   }
 }
 
@@ -71,7 +80,7 @@ export function CategoriesManager({ categories }: Readonly<{ categories: BlogCat
   }
 
   async function handleDelete(id: string) {
-    if (!confirm('Delete this category?')) return
+    if (!confirm('Are you sure you want to delete this category?')) return
     setSaving(true)
     setError('')
     try {
@@ -90,139 +99,177 @@ export function CategoriesManager({ categories }: Readonly<{ categories: BlogCat
 
   return (
     <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-      <div className="rounded-[1.7rem] border border-white/10 bg-white/[0.03] p-4">
-        <div className="flex items-center justify-between gap-3 border-b border-white/8 pb-4">
+      {/* Category List */}
+      <div className="rounded-[1.8rem] border border-cyan-500/20 bg-[#120c24]/70 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.35)] backdrop-blur-md">
+        <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.28em] text-fuchsia-200">Categories</p>
-            <h3 className="mt-1 text-xl font-black text-white">Category CRUD</h3>
+            <p className="text-[10px] font-black uppercase tracking-[0.28em] text-cyan-400">Taxonomy Structure</p>
+            <h3 className="mt-1 text-xl font-black text-white">Categories ({categories.length})</h3>
           </div>
           <button
             type="button"
             onClick={() => setDraft(emptyDraft())}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-slate-300 transition hover:border-fuchsia-400/25 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-full border border-cyan-500/40 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-cyan-200 transition hover:bg-cyan-500/30 hover:text-white shadow-[0_0_15px_rgba(6,182,212,0.2)]"
           >
-            <Plus className="h-4 w-4 text-fuchsia-200" />
-            New category
+            <Plus className="h-4 w-4 text-cyan-400" />
+            New Category
           </button>
         </div>
 
         <div className="mt-4 space-y-3">
-          {categories.map((category) => (
-            <div key={category.id} className="rounded-[1.5rem] border border-white/8 bg-black/20 p-4">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.22em] text-slate-500">
-                    Order {category.order} • {category.slug}
-                  </p>
-                  <h4 className="mt-1 text-sm font-bold text-white">{category.name}</h4>
-                  <p className="mt-2 text-xs leading-6 text-slate-400 line-clamp-3">{category.description}</p>
-                </div>
-                <div className="flex shrink-0 flex-col gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setDraft(toDraft(category))}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-300 transition hover:border-fuchsia-400/25 hover:text-white"
-                  >
-                    <PencilLine className="h-3.5 w-3.5" />
-                    Edit
+          {categories.map((category) => {
+            const active = category.id === draft.id
+            return (
+              <div
+                key={category.id}
+                className={`rounded-2xl border p-4 transition-all duration-200 ${
+                  active
+                    ? 'border-cyan-500/50 bg-cyan-950/30 shadow-[0_0_20px_rgba(6,182,212,0.2)] scale-[1.01]'
+                    : 'border-white/10 bg-black/40 hover:border-cyan-500/30 hover:bg-white/[0.03]'
+                }`}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <button type="button" onClick={() => setDraft(toDraft(category))} className="text-left flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className={`h-2.5 w-2.5 rounded-full bg-gradient-to-r ${category.accent}`} />
+                      <p className="text-sm font-bold text-white">{category.name}</p>
+                      <span className="font-mono text-[10px] text-zinc-500">/{category.slug}</span>
+                    </div>
+                    <p className="mt-1.5 text-xs text-zinc-400 leading-relaxed">{category.description}</p>
                   </button>
-                  <button
-                    type="button"
-                    onClick={() => void handleDelete(category.id)}
-                    className="inline-flex items-center gap-2 rounded-full border border-rose-400/20 px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-rose-200 transition hover:bg-rose-500/10"
-                  >
-                    <Trash2 className="h-3.5 w-3.5" />
-                    Delete
-                  </button>
+
+                  <div className="flex shrink-0 items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setDraft(toDraft(category))}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 text-[10px] font-bold text-cyan-200 transition hover:bg-cyan-500/20"
+                    >
+                      <PencilLine className="h-3 w-3 text-cyan-400" />
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => void handleDelete(category.id)}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-[10px] font-bold text-rose-200 transition hover:bg-rose-500/20"
+                    >
+                      <Trash2 className="h-3 w-3 text-rose-400" />
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 
-      <div className="rounded-[1.7rem] border border-white/10 bg-white/[0.03] p-4">
-        <div className="border-b border-white/8 pb-4">
-          <p className="text-[10px] font-black uppercase tracking-[0.28em] text-fuchsia-200">
-            {draft.id ? 'Edit category' : 'Create category'}
+      {/* Editor Form */}
+      <div className="rounded-[1.8rem] border border-cyan-500/20 bg-[#120c24]/70 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.35)] backdrop-blur-md">
+        <div className="border-b border-white/10 pb-4">
+          <p className="text-[10px] font-black uppercase tracking-[0.28em] text-cyan-400">
+            {draft.id ? 'Edit Category' : 'Create Category'}
           </p>
           <h3 className="mt-1 text-xl font-black text-white">
-            {draft.id ? draft.name || 'Category' : 'New GTA 6 category'}
+            {draft.id ? draft.name : 'New GTA 6 Taxonomy Category'}
           </h3>
         </div>
 
         {error ? (
-          <div className="mt-4 rounded-2xl border border-rose-400/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-100">
+          <div className="mt-4 rounded-2xl border border-rose-500/30 bg-rose-500/15 px-4 py-3 text-sm font-semibold text-rose-100">
             {error}
           </div>
         ) : null}
 
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <Field label="Name">
-            <input value={draft.name} onChange={(event) => setDraft({ ...draft, name: event.target.value })} className="field-input" />
-          </Field>
-          <Field label="Slug">
-            <input value={draft.slug} onChange={(event) => setDraft({ ...draft, slug: event.target.value })} className="field-input" />
-          </Field>
-          <Field label="Description" className="md:col-span-2">
-            <textarea rows={4} value={draft.description} onChange={(event) => setDraft({ ...draft, description: event.target.value })} className="field-input" />
-          </Field>
-          <Field label="Accent">
-            <input value={draft.accent} onChange={(event) => setDraft({ ...draft, accent: event.target.value })} className="field-input" />
-          </Field>
-          <Field label="Order">
-            <input type="number" value={draft.order} onChange={(event) => setDraft({ ...draft, order: Number(event.target.value) })} className="field-input" />
-          </Field>
-          <Field label="Icon" className="md:col-span-2">
-            <input value={draft.icon} onChange={(event) => setDraft({ ...draft, icon: event.target.value })} className="field-input" />
-          </Field>
-        </div>
+        <div className="mt-5 space-y-4">
+          <label className="block space-y-1.5">
+            <span className="text-[10px] font-black uppercase tracking-[0.24em] text-zinc-400">Category Name</span>
+            <input
+              value={draft.name}
+              onChange={(e) => setDraft({ ...draft, name: e.target.value })}
+              className="field-input"
+              placeholder="e.g. Gameplay, Trailers, Weapons..."
+            />
+          </label>
 
-        <div className="mt-5 flex items-center justify-between gap-3 border-t border-white/8 pt-4">
-          <p className="text-xs text-slate-500">These categories drive the home-page filters, post forms, and URL filtering.</p>
-          <button
-            type="button"
-            onClick={() => void handleSave()}
-            disabled={saving}
-            className="inline-flex items-center gap-2 rounded-full border border-fuchsia-400/30 bg-fuchsia-500/15 px-5 py-3 text-xs font-black uppercase tracking-[0.22em] text-fuchsia-50 transition hover:bg-fuchsia-500/25 disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {saving ? 'Saving...' : 'Save category'}
-          </button>
+          <label className="block space-y-1.5">
+            <span className="text-[10px] font-black uppercase tracking-[0.24em] text-zinc-400">URL Slug</span>
+            <input
+              value={draft.slug}
+              onChange={(e) => setDraft({ ...draft, slug: e.target.value })}
+              className="field-input"
+              placeholder="e.g. gameplay"
+            />
+          </label>
+
+          <label className="block space-y-1.5">
+            <span className="text-[10px] font-black uppercase tracking-[0.24em] text-zinc-400">Description</span>
+            <textarea
+              rows={2}
+              value={draft.description}
+              onChange={(e) => setDraft({ ...draft, description: e.target.value })}
+              className="field-input"
+              placeholder="Short description shown in category dropdowns..."
+            />
+          </label>
+
+          <div>
+            <span className="mb-2 block text-[10px] font-black uppercase tracking-[0.24em] text-zinc-400">
+              Neon Gradient Theme
+            </span>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+              {ACCENT_PRESETS.map((preset) => (
+                <button
+                  key={preset.value}
+                  type="button"
+                  onClick={() => setDraft({ ...draft, accent: preset.value })}
+                  className={`flex items-center gap-2 rounded-xl border p-2.5 text-left text-xs font-bold transition-all ${
+                    draft.accent === preset.value
+                      ? 'border-cyan-400 bg-cyan-950/40 text-white shadow-[0_0_10px_rgba(6,182,212,0.3)]'
+                      : 'border-white/10 bg-black/30 text-zinc-400 hover:border-white/20'
+                  }`}
+                >
+                  <span className={`h-3 w-3 rounded-full bg-gradient-to-r ${preset.value}`} />
+                  <span className="truncate">{preset.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <label className="block space-y-1.5">
+              <span className="text-[10px] font-black uppercase tracking-[0.24em] text-zinc-400">Icon Name</span>
+              <input
+                value={draft.icon}
+                onChange={(e) => setDraft({ ...draft, icon: e.target.value })}
+                className="field-input"
+                placeholder="e.g. gamepad-2, film, users"
+              />
+            </label>
+
+            <label className="block space-y-1.5">
+              <span className="text-[10px] font-black uppercase tracking-[0.24em] text-zinc-400">Display Order</span>
+              <input
+                type="number"
+                value={draft.order}
+                onChange={(e) => setDraft({ ...draft, order: Number(e.target.value) })}
+                className="field-input"
+              />
+            </label>
+          </div>
+
+          <div className="flex items-center justify-between border-t border-white/10 pt-4">
+            <p className="text-[11px] text-zinc-400">Updates live navigation pills immediately.</p>
+            <button
+              type="button"
+              onClick={() => void handleSave()}
+              disabled={saving}
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-500/50 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-white transition hover:opacity-90 disabled:opacity-50 shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+            >
+              {saving ? 'Saving...' : 'Save Category'}
+            </button>
+          </div>
         </div>
       </div>
-
-      <style jsx global>{`
-        .field-input {
-          width: 100%;
-          border-radius: 1rem;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          background: rgba(0, 0, 0, 0.24);
-          padding: 0.75rem 0.9rem;
-          color: white;
-          outline: none;
-        }
-        .field-input:focus {
-          border-color: rgba(236, 72, 153, 0.35);
-          box-shadow: 0 0 0 1px rgba(236, 72, 153, 0.12);
-        }
-      `}</style>
     </div>
-  )
-}
-
-function Field({
-  label,
-  children,
-  className = '',
-}: Readonly<{
-  label: string
-  children: React.ReactNode
-  className?: string
-}>) {
-  return (
-    <label className={`block space-y-2 ${className}`}>
-      <span className="text-[10px] font-black uppercase tracking-[0.22em] text-slate-500">{label}</span>
-      {children}
-    </label>
   )
 }

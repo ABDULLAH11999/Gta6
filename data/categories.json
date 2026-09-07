@@ -1,10 +1,47 @@
 [
   {
+    "id": "cat-trailers",
+    "icon": "film",
+    "name": "Trailers",
+    "slug": "trailers",
+    "description": "Official trailers, teaser breakdowns, and frame-by-frame visual analysis.",
+    "order": 1,
+    "accent": "from-fuchsia-500 to-pink-500"
+  },
+  {
     "id": "cat-gameplay",
-    "icon": "joystick",
+    "icon": "gamepad-2",
     "name": "Gameplay",
     "slug": "gameplay",
+    "description": "Core combat, driving physics, dual protagonist mechanics, and Leonida world systems.",
     "order": 2,
-    "accent": "from-sky-500 to-cyan-400"
+    "accent": "from-cyan-500 to-blue-500"
+  },
+  {
+    "id": "cat-characters",
+    "icon": "users",
+    "name": "Characters",
+    "slug": "characters",
+    "description": "Jason, Lucia, criminal networks, and Vice City personalities deep dives.",
+    "order": 3,
+    "accent": "from-violet-500 to-purple-500"
+  },
+  {
+    "id": "cat-locations",
+    "icon": "map-pin",
+    "name": "Locations",
+    "slug": "locations",
+    "description": "Vice City neon strips, Leonida wetlands, Port Gellhorn, and interior landmarks.",
+    "order": 4,
+    "accent": "from-amber-500 to-orange-500"
+  },
+  {
+    "id": "cat-resources",
+    "icon": "book-open",
+    "name": "Resources",
+    "slug": "resources",
+    "description": "Launch countdowns, console/PC performance guides, and community resources.",
+    "order": 5,
+    "accent": "from-emerald-500 to-teal-500"
   }
 ]

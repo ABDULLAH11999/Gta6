@@ -1,9 +1,14 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { ChevronLeft, Mail, Shield, UserCheck, UserX } from 'lucide-react'
 import { GlassPanel, SectionHeading, StatusBadge } from '@/components/ui/glass'
-import { getUsers } from '@/lib/db'
-import { issues } from '@/lib/site-data'
+import { getUsers, refreshDatabaseSnapshot } from '@/lib/db'
 
-export default function AdminUserDetailPage({ params }: Readonly<{ params: { id: string } }>) {
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
+export default async function AdminUserDetailPage({ params }: Readonly<{ params: { id: string } }>) {
+  await refreshDatabaseSnapshot()
   const users = getUsers()
   const user = users.find((item) => item.id === params.id)
 
@@ -11,66 +16,59 @@ export default function AdminUserDetailPage({ params }: Readonly<{ params: { id:
     notFound()
   }
 
-  const messages = issues.flatMap((issue) =>
-    issue.comments
-      .filter((comment) => comment.author.toLowerCase().includes(user.name.split(' ')[0].toLowerCase()))
-      .map((comment) => ({
-        ...comment,
-        issueTitle: issue.title,
-      })),
-  )
-
   return (
     <div className="space-y-6">
-      <GlassPanel>
+      <Link
+        href="/admin/users"
+        className="inline-flex items-center gap-1.5 text-xs font-bold text-pink-400 hover:text-pink-300 transition-colors"
+      >
+        <ChevronLeft className="h-4 w-4" />
+        Back to Users
+      </Link>
+
+      <GlassPanel className="border-amber-500/20">
         <SectionHeading eyebrow="User Profile" title={user.name} detail={user.email} />
         <div className="mt-4 flex flex-wrap gap-2">
           <StatusBadge label={user.role} tone="blue" />
-          <StatusBadge label={user.verified ? 'Active' : 'Pending'} tone={user.verified ? 'emerald' : 'amber'} />
-          <StatusBadge label={`Joined ${new Date(user.createdAt).toISOString().slice(0, 10)}`} tone="violet" />
+          <StatusBadge label={user.verified ? 'Verified Active' : 'Pending OTP'} tone={user.verified ? 'emerald' : 'amber'} />
+          <StatusBadge label={`Joined ${new Date(user.createdAt).toLocaleDateString('en-US', { dateStyle: 'medium' })}`} tone="violet" />
         </div>
-        
-        <div className="mt-6 flex flex-wrap gap-2 border-t border-border/60 pt-6">
-          <button className="rounded-xl border border-rose-500/25 bg-rose-500/5 hover:bg-rose-500/10 px-4 py-2.5 text-xs font-bold text-rose-600 transition-all">
-            Ban user
-          </button>
-          <button className="rounded-xl border border-amber-500/25 bg-amber-500/5 hover:bg-amber-500/10 px-4 py-2.5 text-xs font-bold text-amber-600 transition-all">
-            Flag account
-          </button>
-          <button className="rounded-xl border border-border bg-panel-2/30 hover:bg-panel-2/60 px-4 py-2.5 text-xs font-bold text-text transition-all">
-            Send moderation email
-          </button>
+
+        <div className="mt-6 flex flex-wrap gap-3 border-t border-white/10 pt-6">
+          <a
+            href={`mailto:${user.email}?subject=Message from GtaFans Admin`}
+            className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-500/10 px-4 py-2 text-xs font-bold text-sky-200 transition hover:bg-sky-500/20"
+          >
+            <Mail className="h-3.5 w-3.5 text-sky-400" />
+            Send Email
+          </a>
         </div>
       </GlassPanel>
 
-      <GlassPanel>
+      <GlassPanel className="border-white/10">
         <SectionHeading
-          eyebrow="User Messages"
-          title="Comments and conversations"
-          detail="Admins inspect user activity and remove inappropriate issue comments here."
+          eyebrow="Account Details"
+          title="Security & Verification Status"
+          detail="Account creation timestamps, session logs, and profile attributes."
         />
-        
-        <div className="mt-6 space-y-3">
-          {messages.length ? (
-            messages.map((message) => (
-              <div key={message.id} className="rounded-xl border border-border bg-panel-2/10 p-4">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <p className="text-xs font-bold text-text">{message.issueTitle}</p>
-                    <p className="text-[10px] text-muted font-medium mt-0.5">{message.createdAt}</p>
-                  </div>
-                  <button className="rounded-lg border border-rose-500/25 bg-rose-500/5 hover:bg-rose-500/10 px-2.5 py-1.5 text-[10px] font-bold text-rose-600 transition-all">
-                    Remove message
-                  </button>
-                </div>
-                <p className="mt-3 text-xs leading-relaxed text-muted">{message.message}</p>
-              </div>
-            ))
-          ) : (
-            <div className="rounded-xl border border-border bg-panel-2/5 p-4 text-xs font-semibold text-muted text-center">
-              No matching comments found in the sample moderation dataset yet.
-            </div>
-          )}
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">Account ID</p>
+            <p className="mt-1 font-mono text-xs text-white">{user.id}</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">Email Address</p>
+            <p className="mt-1 font-mono text-xs text-white">{user.email}</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">Current Role</p>
+            <p className="mt-1 text-xs font-bold text-amber-300">{user.role}</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">Status</p>
+            <p className="mt-1 text-xs font-bold text-emerald-300">{user.verified ? 'Active' : 'Unverified'}</p>
+          </div>
         </div>
       </GlassPanel>
     </div>

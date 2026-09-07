@@ -1,4 +1,4 @@
-import { GlassPanel } from '@/components/ui/glass'
+import { GlassPanel, SectionHeading } from '@/components/ui/glass'
 import { PostsManager } from '@/components/admin/posts-manager'
 import { getCategories, getPosts, refreshDatabaseSnapshot } from '@/lib/db'
 
@@ -12,12 +12,12 @@ export default async function AdminPostsPage() {
 
   return (
     <div className="space-y-6">
-      <GlassPanel className="space-y-3">
-        <p className="text-[10px] font-black uppercase tracking-[0.28em] text-fuchsia-200">Blog Posts</p>
-        <h3 className="text-2xl font-black text-white">SEO-first post management</h3>
-        <p className="text-sm leading-7 text-slate-400">
-          Manage titles, slugs, categories, hero media, content JSON, and SEO metadata from one editor.
-        </p>
+      <GlassPanel className="border-pink-500/20 bg-gradient-to-r from-pink-950/20 via-purple-950/10 to-transparent">
+        <SectionHeading
+          eyebrow="Editorial & Content Engine"
+          title="SEO-First Blog Post Management"
+          detail="Manage article titles, URL slugs, YouTube video embeds, hero graphics, JSON content blocks, and search meta tags."
+        />
       </GlassPanel>
 
       <PostsManager posts={posts} categories={categories} />

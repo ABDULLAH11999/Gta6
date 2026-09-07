@@ -1,4 +1,4 @@
-import { GlassPanel } from '@/components/ui/glass'
+import { GlassPanel, SectionHeading } from '@/components/ui/glass'
 import { SettingsManager } from '@/components/admin/settings-manager'
 import { getStoredSettings, refreshDatabaseSnapshot } from '@/lib/db'
 
@@ -11,12 +11,12 @@ export default async function AdminSettingsPage() {
 
   return (
     <div className="space-y-6">
-      <GlassPanel className="space-y-3">
-        <p className="text-[10px] font-black uppercase tracking-[0.28em] text-fuchsia-200">Settings</p>
-        <h3 className="text-2xl font-black text-white">Site-wide branding and SEO settings</h3>
-        <p className="text-sm leading-7 text-slate-400">
-          Control the launch countdown, metadata defaults, footer links, and mail configuration from this screen.
-        </p>
+      <GlassPanel className="border-amber-500/20 bg-gradient-to-r from-amber-950/20 via-purple-950/10 to-transparent">
+        <SectionHeading
+          eyebrow="Configuration & SEO"
+          title="Site-Wide Branding & Launch Settings"
+          detail="Control the launch countdown target, brand taglines, canonical URL, mail delivery, and SEO keywords."
+        />
       </GlassPanel>
 
       <SettingsManager settings={settings} />

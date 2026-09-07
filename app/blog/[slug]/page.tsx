@@ -35,17 +35,17 @@ export function generateMetadata({ params }: Readonly<{ params: { slug: string }
 function getCategoryColors(slug: string) {
   switch (slug.toLowerCase()) {
     case 'trailers':
-      return { text: 'text-white', border: 'border-white/20', bg: 'bg-white/10' }
+      return { text: 'text-pink-300', border: 'border-pink-500/40', bg: 'bg-pink-500/20' }
     case 'gameplay':
-      return { text: 'text-white', border: 'border-white/20', bg: 'bg-white/10' }
+      return { text: 'text-cyan-300', border: 'border-cyan-500/40', bg: 'bg-cyan-500/20' }
     case 'characters':
-      return { text: 'text-white', border: 'border-white/20', bg: 'bg-white/10' }
+      return { text: 'text-purple-300', border: 'border-purple-500/40', bg: 'bg-purple-500/20' }
     case 'locations':
-      return { text: 'text-white', border: 'border-white/20', bg: 'bg-white/10' }
+      return { text: 'text-amber-300', border: 'border-amber-500/40', bg: 'bg-amber-500/20' }
     case 'resources':
-      return { text: 'text-white', border: 'border-white/20', bg: 'bg-white/10' }
+      return { text: 'text-emerald-300', border: 'border-emerald-500/40', bg: 'bg-emerald-500/20' }
     default:
-      return { text: 'text-white', border: 'border-white/20', bg: 'bg-white/10' }
+      return { text: 'text-pink-300', border: 'border-pink-500/30', bg: 'bg-pink-500/15' }
   }
 }
 
