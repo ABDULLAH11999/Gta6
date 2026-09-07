@@ -34,13 +34,13 @@ const gameplayPost = {
   slotTime: 'Sep 7, 2026',
   heroImage: '/blog/images/Real_Dimez_03.CcpVFPll_1vpoSg.webp',
   heroImageAlt: 'Grand Theft Auto VI Official Gameplay Reveal Breakdown',
-  heroVideoUrl: 'https://www.youtube.com/embed/QdBZY2fkU-0',
+  heroVideoUrl: 'https://www.youtube.com/embed/tJbzMqJGH4k',
   seoTitle: 'GTA 6 Official Gameplay Reveal: Features, Mechanics & Open World Deep Dive',
   seoDescription: 'Official Grand Theft Auto VI gameplay breakdown. Discover Jason and Lucia dual-protagonist mechanics, RAGE 9 physics, Vice City dynamic police response, weapon wheel limits, and watch the official gameplay reveal video.',
   metaTitle: 'GTA 6 Official Gameplay Reveal: Features, Mechanics & Open World Deep Dive',
   metaDescription: 'Official Grand Theft Auto VI gameplay breakdown. Discover Jason and Lucia dual-protagonist mechanics, RAGE 9 physics, Vice City dynamic police response, weapon wheel limits, and watch the official gameplay reveal video.',
   canonicalPath: '/blog/gta-6-official-gameplay-reveal-mechanics-breakdown',
-  videoLinks: ['https://www.youtube.com/embed/QdBZY2fkU-0'],
+  videoLinks: ['https://www.youtube.com/embed/tJbzMqJGH4k'],
   imageLinks: [
     '/blog/images/Real_Dimez_03.CcpVFPll_1vpoSg.webp',
     '/blog/images/Cal_Hampton_01.BlGYCUcC_ZMYlzH.webp',
@@ -52,7 +52,7 @@ const gameplayPost = {
   ],
   sourceLinks: [
     'https://www.rockstargames.com/VI',
-    'https://www.youtube.com/watch?v=QdBZY2fkU-0'
+    'https://www.youtube.com/watch?v=tJbzMqJGH4k'
   ],
   excerpt: 'Rockstar Games has unveiled the definitive next-generation gameplay mechanics for Grand Theft Auto VI. From dual-protagonist tactical switching to hyper-realistic RAGE 9 engine physics, here is the complete breakdown.',
   summary: 'Rockstar Games has unveiled the definitive next-generation gameplay mechanics for Grand Theft Auto VI. From dual-protagonist tactical switching to hyper-realistic RAGE 9 engine physics, here is the complete breakdown.',
@@ -64,7 +64,7 @@ const gameplayPost = {
     {
       type: 'video',
       title: 'Grand Theft Auto VI - Official Trailer & Gameplay Reveal',
-      src: 'https://www.youtube.com/embed/QdBZY2fkU-0'
+      src: 'https://www.youtube.com/embed/tJbzMqJGH4k'
     },
     {
       type: 'quote',
