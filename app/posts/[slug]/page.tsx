@@ -1,9 +1,6 @@
 import { redirect } from 'next/navigation'
-import { getPosts } from '@/lib/db'
 
-export function generateStaticParams() {
-  return getPosts().map((post) => ({ slug: post.slug }))
-}
+export const dynamic = 'force-dynamic'
 
 export default function LegacyPostRedirect({ params }: Readonly<{ params: { slug: string } }>) {
   redirect(`/blog/${params.slug}`)

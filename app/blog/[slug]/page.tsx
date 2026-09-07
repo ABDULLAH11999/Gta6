@@ -10,11 +10,8 @@ import type { BlogContentBlock } from '@/lib/types'
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
-export function generateStaticParams() {
-  return getPosts().map((post) => ({ slug: post.slug }))
-}
-
-export function generateMetadata({ params }: Readonly<{ params: { slug: string } }>): Metadata {
+export async function generateMetadata({ params }: Readonly<{ params: { slug: string } }>): Promise<Metadata> {
+  await refreshDatabaseSnapshot()
   const post = getPosts().find((item) => item.slug === params.slug)
   if (!post) return { title: 'Post Not Found' }
 
