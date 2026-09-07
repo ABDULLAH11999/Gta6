@@ -72,6 +72,7 @@ export function buildPostRecord(
   const status = String(body.status ?? existing?.status ?? 'draft') as BlogPostRecord['status']
   const heroImage = String(body.heroImage ?? existing?.heroImage ?? '').trim()
   const galleryImages = normalizeList(body.galleryImages)
+  const tags = normalizeList(body.tags)
   const rawHeroVideo = String(body.heroVideoUrl ?? existing?.heroVideoUrl ?? '').trim()
   const heroVideoUrl = formatYouTubeEmbedUrl(rawHeroVideo) || undefined
 
